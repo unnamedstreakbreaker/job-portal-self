@@ -175,6 +175,25 @@ html[data-theme="dark"] .sitefoot{background:linear-gradient(135deg,#0b4f4a,#115
 .sitefoot .fl{display:flex;gap:8px;flex-wrap:wrap}
 .sitefoot .fl a{color:#fff;text-decoration:none;font-weight:600;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:7px 12px;border-radius:999px}
 .sitefoot small{display:block;margin-top:12px;opacity:.8}
+
+/* ===== desktop: cards grid + filters sidebar on the right ===== */
+#side{display:none}
+@media (min-width:1024px){
+  .wrap{max-width:1320px}
+  .layout{max-width:1320px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start}
+  .layout>main{padding:18px 0 40px;max-width:none;margin:0}
+  #side{display:block;position:sticky;top:14px;margin-top:18px;max-height:calc(100vh - 28px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:16px}
+  #side::before{content:"⚙️ Filters";display:block;font-weight:700;font-size:15px;margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid transparent;border-image:linear-gradient(90deg,var(--teal),var(--purple)) 1}
+  #side .collapse{display:block;opacity:1;pointer-events:auto}
+  #side .collapse>.inner{overflow:visible}
+  .hdr-collapsed .layout{grid-template-columns:minmax(0,1fr)}
+  .hdr-collapsed #side{display:none}
+  .list{grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px;align-items:start}
+  .list>.grp,.list>.promo,.list>.empty,.list>.resbar{grid-column:1/-1}
+  .job{height:100%;display:flex;flex-direction:column}
+  .job .links{margin-top:auto;padding-top:10px}
+}
+@media (min-width:1024px){#side .panel{margin:0;border:0;box-shadow:none;padding:0}#side .me .row{grid-template-columns:1fr 1fr}.hero .cats{max-width:900px}}
 </style>
 <script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
@@ -187,7 +206,7 @@ html[data-theme="dark"] .sitefoot{background:linear-gradient(135deg,#0b4f4a,#115
     <div class="collapse"><div class="inner"><a class="itlink" href="it/">💼 IT Jobs Finder — job types, saved &amp; applied tracker →</a></div></div>
     <button type="button" class="hdrtoggle" id="hdrToggle" aria-expanded="true"><span class="tx">Hide filters</span><span class="n" style="display:none">0</span><span class="ar">▲</span></button>
   </div></div>
-  <div class="wrap collapse"><div class="inner"><div class="panel">
+  <div class="wrap collapse" id="filters"><div class="inner"><div class="panel">
     <section id="govtHead">
       <div class="stats" id="stats"></div>
       <div class="controls">
@@ -217,13 +236,16 @@ html[data-theme="dark"] .sitefoot{background:linear-gradient(135deg,#0b4f4a,#115
     </section>
   </div></div></div>
 </header>
-<main class="wrap">
+<div class="layout">
+<main>
   <div class="resbar" id="resbar"></div>
   <div class="list" id="itExtra" hidden></div>
   <div class="list" id="list"><div class="empty">Loading jobs…</div></div>
   <div class="list" id="itList" hidden></div>
   <div class="coverage" id="coverage" hidden></div>
 </main>
+<aside id="side" aria-label="Filters"></aside>
+</div>
 <footer class="sitefoot">
   <h3>💡 Tips before you apply</h3>
   <ul><li>Always apply on the official website — never pay any fee for a job offer.</li><li>Check age relaxations and subject rules in the notification.</li><li>Carry 3–4 resume copies, ID proof and certificates to walk-ins.</li></ul>
@@ -503,6 +525,15 @@ fetch('jobs.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
  b.addEventListener('click',function(e){e.stopPropagation();set(!document.body.classList.contains('hdr-collapsed'))});
  function cnt(){var n=document.querySelectorAll('#active .afl').length;if(!n){var m=document.querySelectorAll('#govtHead .chip.on,#itHead .chip.on');n=0;m.forEach(function(x){var v=x.dataset.v;if(v&&!/^(All|Open|Any|Not set|All jobs)$/.test(v))n++})}var s=b.querySelector('.n');if(s.textContent!==String(n))s.textContent=n;var d=n?'':'none';if(s.style.display!==d)s.style.display=d}
  var hd=document.querySelector('header');var t;new MutationObserver(function(){clearTimeout(t);t=setTimeout(cnt,50)}).observe(hd,{subtree:true,childList:true});cnt();
+})();
+</script>
+<script>
+(function(){
+ var f=document.getElementById('filters'),side=document.getElementById('side');if(!f||!side)return;
+ var home=document.createComment('filters-home');f.parentNode.insertBefore(home,f);
+ var mq=matchMedia('(min-width:1024px)');
+ function place(){if(mq.matches){if(f.parentNode!==side)side.appendChild(f)}else if(f.parentNode===side){home.parentNode.insertBefore(f,home.nextSibling)}}
+ place();try{mq.addEventListener('change',place)}catch(e){mq.addListener(place)}
 })();
 </script>
 </body>
