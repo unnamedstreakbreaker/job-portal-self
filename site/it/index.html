@@ -93,7 +93,7 @@ main{padding:14px 0 40px}
 .reset{background:none;border:1px solid var(--bad);color:var(--bad);border-radius:999px;padding:3px 10px;font:600 12.5px Inter,sans-serif;cursor:pointer}
 .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
 .bd{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--line)}
-.bd.Full-time{color:var(--ok)}.bd.Part-time,.bd.Freelance{color:var(--purple)}.bd.Contract{color:var(--mid)}.bd.Internship{color:var(--blue)}.bd.walk{color:var(--bad)}
+.bd.Full-time{color:var(--t-ft);border-color:color-mix(in srgb,var(--t-ft) 40%,transparent);background:color-mix(in srgb,var(--t-ft) 10%,transparent)}.bd.Part-time,.bd.Freelance{color:var(--t-pt);border-color:color-mix(in srgb,var(--t-pt) 40%,transparent);background:color-mix(in srgb,var(--t-pt) 10%,transparent)}.bd.Contract{color:var(--t-ct);border-color:color-mix(in srgb,var(--t-ct) 40%,transparent);background:color-mix(in srgb,var(--t-ct) 10%,transparent)}.bd.Internship{color:var(--t-in);border-color:color-mix(in srgb,var(--t-in) 40%,transparent);background:color-mix(in srgb,var(--t-in) 10%,transparent)}.bd.walk{color:var(--bad)}
 .acts{display:flex;gap:6px;margin-top:8px}
 .acts button{flex:1;-webkit-appearance:none;appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:7px 4px;font:600 12.5px Inter,sans-serif;cursor:pointer;touch-action:manipulation;min-height:36px}
 .acts button.on{background:color-mix(in srgb,var(--ok) 14%,transparent);border-color:var(--ok);color:var(--ok)}
@@ -140,8 +140,11 @@ header .active .lbl{color:#fff}
 header .afl{background:rgba(255,255,255,.9);color:#4c1d95}
 header .reset{border-color:#fff;color:#fff}
 .chip.on{background:var(--soft);border-color:var(--softline);color:var(--softink)}
-.job{border-radius:16px;box-shadow:var(--shadow);border-left:5px solid var(--teal)}
-.job[data-t="Part-time"],.job[data-t="Freelance"]{border-left-color:var(--purple)}.job[data-t="Contract"]{border-left-color:#d97706}.job[data-t="Internship"]{border-left-color:#2563eb}
+html{--t-ft:#0d9488;--t-pt:#7c3aed;--t-ct:#d97706;--t-in:#2563eb}html[data-theme="dark"]{--t-ft:#2dd4bf;--t-pt:#a78bfa;--t-ct:#fbbf24;--t-in:#7cabff}
+.job{--acc:var(--t-ft);border-radius:16px;box-shadow:var(--shadow);position:relative;overflow:hidden;padding-top:19px}
+.job::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--acc)}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.9);margin-top:8px}.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-2px;width:12px;height:12px;border:2px solid #fff}
+.job[data-t="Part-time"],.job[data-t="Freelance"]{--acc:var(--t-pt)}.job[data-t="Contract"]{--acc:var(--t-ct)}.job[data-t="Internship"]{--acc:var(--t-in)}
 .links a{border-radius:11px;padding:9px 14px}
 .links a.primary{background:linear-gradient(135deg,var(--teal),var(--purple));border:0;color:#fff;box-shadow:0 3px 10px color-mix(in srgb,var(--purple) 30%,transparent)}
 .why summary,details.more summary,.clearall{color:var(--teal)}
@@ -192,8 +195,10 @@ html[data-theme="dark"] .sitefoot{background:linear-gradient(135deg,#0b4f4a,#115
 #side{display:none}
 @media (min-width:1024px){
   .wrap{max-width:1320px}
-  .layout{max-width:1320px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start}
-  .layout>main{padding:18px 0 40px;max-width:none;margin:0}
+  .layout{max-width:1320px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:380px minmax(0,1fr);gap:24px;align-items:start}
+  .layout>main{padding:18px 0 40px;max-width:none;margin:0;grid-column:2;grid-row:1}
+  #side{grid-column:1;grid-row:1}
+  .hdr-collapsed .layout>main{grid-column:1}
   #side{display:block;position:sticky;top:14px;margin-top:18px;max-height:calc(100vh - 28px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:16px}
   #side::before{content:"⚙️ Filters";display:block;font-weight:700;font-size:15px;margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid transparent;border-image:linear-gradient(90deg,var(--teal),var(--purple)) 1}
   #side .collapse{display:block;opacity:1;pointer-events:auto}
@@ -248,6 +253,7 @@ html[data-theme="dark"] .sitefoot{background:linear-gradient(135deg,#0b4f4a,#115
     </div></div>
     <div class="active" id="active"></div>
     <div class="stats" id="stats"></div>
+    <div class="legend"><span>Card colour = job type:</span><span><i style="background:var(--t-ft)"></i>Full-time</span><span><i style="background:var(--t-pt)"></i>Part-time / Freelance</span><span><i style="background:var(--t-ct)"></i>Contract</span><span><i style="background:var(--t-in)"></i>Internship</span></div>
     <button type="button" class="hdrtoggle" id="hdrToggle" aria-expanded="true"><span class="tx">Hide filters</span><span class="n" style="display:none">0</span><span class="ar">▲</span></button>
   </div>
 </header>

@@ -115,8 +115,9 @@ input[type=search]:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 
 .stat b{color:var(--purple)}
 main{padding:14px 16px 40px}
 .list{gap:12px}
-.job{border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);border-left:5px solid var(--c-govt);padding:15px 15px 14px}
-.job[data-sec="Private"]{border-left-color:var(--c-pvt)}.job[data-sec="IT"]{border-left-color:var(--c-it)}.job[data-sec="BPO"]{border-left-color:var(--c-bpo)}
+.job{--acc:var(--c-govt);border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);padding:19px 15px 14px;position:relative;overflow:hidden}
+.job::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--acc)}
+.job[data-sec="Private"]{--acc:var(--c-pvt)}.job[data-sec="IT"],#itList .job{--acc:var(--c-it)}.job[data-sec="BPO"]{--acc:var(--c-bpo)}
 .job h2{font-size:16px}
 .tag.govt{color:var(--c-govt);border-color:color-mix(in srgb,var(--c-govt) 40%,transparent);background:color-mix(in srgb,var(--c-govt) 10%,transparent)}
 .tag.pvt{color:var(--c-pvt);border-color:color-mix(in srgb,var(--c-pvt) 40%,transparent);background:color-mix(in srgb,var(--c-pvt) 10%,transparent)}
@@ -160,7 +161,11 @@ body{background:
  radial-gradient(900px 500px at 110% 20%,color-mix(in srgb,var(--purple) 10%,transparent),transparent 60%),
  radial-gradient(800px 500px at -10% 70%,color-mix(in srgb,var(--teal) 10%,transparent),transparent 60%),var(--bg);background-attachment:fixed}
 .resbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:4px 0 12px;padding:10px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden}
-.resbar::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(180deg,var(--teal),var(--purple))}
+.resbar::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--acc,linear-gradient(180deg,var(--teal),var(--purple)))}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--mute);margin-top:4px}.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.cat::after{content:"";display:block;width:26px;height:4px;border-radius:3px;margin-top:4px;background:var(--acc)}
+.cat[data-cat="All"]{--acc:linear-gradient(90deg,var(--c-govt),var(--c-pvt),var(--c-it),var(--c-bpo))}.cat[data-cat="Govt"]{--acc:var(--c-govt)}.cat[data-cat="Private"]{--acc:var(--c-pvt)}.cat[data-cat="IT"]{--acc:var(--c-it)}.cat[data-cat="BPO"]{--acc:var(--c-bpo)}
+html{--c-govt:#0d9488;--c-pvt:#7c3aed;--c-it:#2563eb;--c-bpo:#db2777}
 .resbar b{font-size:15px}
 .resbar .rs{font-size:12.5px;color:var(--mute)}
 .resbar .pill{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:color-mix(in srgb,var(--purple) 12%,transparent);color:var(--purple)}
@@ -180,8 +185,10 @@ html[data-theme="dark"] .sitefoot{background:linear-gradient(135deg,#0b4f4a,#115
 #side{display:none}
 @media (min-width:1024px){
   .wrap{max-width:1320px}
-  .layout{max-width:1320px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;align-items:start}
-  .layout>main{padding:18px 0 40px;max-width:none;margin:0}
+  .layout{max-width:1320px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:380px minmax(0,1fr);gap:24px;align-items:start}
+  .layout>main{padding:18px 0 40px;max-width:none;margin:0;grid-column:2;grid-row:1}
+  #side{grid-column:1;grid-row:1}
+  .hdr-collapsed .layout>main{grid-column:1}
   #side{display:block;position:sticky;top:14px;margin-top:18px;max-height:calc(100vh - 28px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:16px}
   #side::before{content:"⚙️ Filters";display:block;font-weight:700;font-size:15px;margin-bottom:10px;padding-bottom:10px;border-bottom:2px solid transparent;border-image:linear-gradient(90deg,var(--teal),var(--purple)) 1}
   #side .collapse{display:block;opacity:1;pointer-events:auto}
@@ -464,7 +471,8 @@ function render(){
   if(it)renderIT();else renderGovt();
   const rb=document.getElementById('resbar');const ic={All:'✨',Govt:'🏛',Private:'🏭',IT:'💻',BPO:'🎧'}[state.cat]||'';
   const shown=it?document.querySelectorAll('#itList article.job').length+document.querySelectorAll('#itExtra article.job').length:document.querySelectorAll('#list article.job').length;
-  rb.innerHTML=`<div><b>${ic} ${shown} ${state.cat==='All'?'jobs':state.cat+' jobs'}</b><div class="rs">${it?'Ranked by your tech stack':'Closing soonest first'}${state.region&&state.region!=='All'&&!it?' · '+esc(state.region):''}</div></div><span class="pill">${it?'IT career pages':esc(state.status)}</span>`;
+  rb.style.setProperty('--acc',{Govt:'var(--c-govt)',Private:'var(--c-pvt)',IT:'var(--c-it)',BPO:'var(--c-bpo)'}[state.cat]||'linear-gradient(180deg,var(--c-govt),var(--c-pvt),var(--c-it),var(--c-bpo))');
+  rb.innerHTML=`<div><b>${ic} ${shown} ${state.cat==='All'?'jobs':state.cat+' jobs'}</b><div class="rs">${it?'Ranked by your tech stack':'Closing soonest first'}${state.region&&state.region!=='All'&&!it?' · '+esc(state.region):''}</div>${state.cat==='All'?'<div class="legend"><span><i style="background:var(--c-govt)"></i>Govt</span><span><i style="background:var(--c-pvt)"></i>Private</span><span><i style="background:var(--c-it)"></i>IT</span><span><i style="background:var(--c-bpo)"></i>BPO</span></div>':''}</div><span class="pill">${it?'IT career pages':esc(state.status)}</span>`;
 }
 function renderGovt(){
   chips(document.getElementById('regionChips'),'region',['All','Andhra Pradesh','Telangana','All India']);
