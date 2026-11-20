@@ -84,24 +84,70 @@ html{--soft:#e8efff;--softline:#a9c0f7;--softink:#1d4ed8;--softbtn:#d3e0ff;--pur
 .totop{position:fixed;right:14px;bottom:18px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;z-index:8;opacity:0;pointer-events:none;transition:opacity .2s;touch-action:manipulation}
 .totop.show{opacity:1;pointer-events:auto}
 a{color:var(--brand)}
+
+/* ===== teal + purple redesign ===== */
+html{--teal:#0d9488;--purple:#7c3aed;--c-govt:#0d9488;--c-pvt:#7c3aed;--c-it:#2563eb;--c-bpo:#db2777;--soft:#e6f7f5;--softline:#8fd6cd;--softink:#0f766e;--softbtn:#c9eee9;--shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06)}
+html[data-theme="dark"]{--teal:#2dd4bf;--purple:#a78bfa;--c-govt:#2dd4bf;--c-pvt:#a78bfa;--c-it:#7cabff;--c-bpo:#f472b6;--soft:#16393a;--softline:#2b6f69;--softink:#99f0e3;--softbtn:#1f4c4b;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25)}
+body{background:var(--bg)}
+header{background:transparent;border:0;padding:0}
+.hero{background:linear-gradient(135deg,#0f766e 0%,#0d9488 38%,#6d28d9 100%);color:#fff;padding:20px 16px 18px;border-radius:0 0 22px 22px;box-shadow:0 8px 24px rgba(109,40,217,.18)}
+html[data-theme="dark"] .hero{background:linear-gradient(135deg,#0b4f4a 0%,#115e59 40%,#4c1d95 100%)}
+.hero h1{font-size:22px;color:#fff}
+.hero .sub{color:rgba(255,255,255,.85)}
+.hero .theme{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.35);color:#fff}
+.hero .itlink{display:inline-flex;align-items:center;gap:6px;margin-top:10px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:7px 12px;border-radius:999px}
+.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+.cat{-webkit-appearance:none;appearance:none;touch-action:manipulation;cursor:pointer;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:#fff;border-radius:14px;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:2px;font:600 12.5px Inter,system-ui,sans-serif;min-height:72px;transition:transform .12s,background .15s}
+.cat .ic{font-size:20px;line-height:1}
+.cat small{font-weight:500;font-size:11px;opacity:.85}
+.cat.on{background:#fff;color:#4c1d95;border-color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.18);transform:translateY(-1px)}
+.cat.on small{color:#0f766e;opacity:1}
+html[data-theme="dark"] .cat.on{background:var(--card);color:var(--ink)}
+@media (max-width:420px){.cats{gap:6px}.cat{font-size:11.5px;min-height:66px}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);margin:14px 16px 0;padding:14px}
+.panel .sub{margin:0 0 4px}
+input[type=search]{background:var(--bg);border-radius:12px;min-height:44px;padding-left:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%2399a' stroke-width='2'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3Cpath d='m11 11 4 4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:12px center}
+input[type=search]:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 20%,transparent)}
+.chip{border-radius:999px;min-height:36px;transition:background .15s,border-color .15s}
+.chip.on{background:var(--soft);border-color:var(--softline);color:var(--softink)}
+.stats{gap:8px}
+.stat{background:linear-gradient(180deg,var(--card),var(--bg));border-radius:12px;padding:8px 12px;box-shadow:var(--shadow)}
+.stat b{color:var(--purple)}
+main{padding:14px 16px 40px}
+.list{gap:12px}
+.job{border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);border-left:5px solid var(--c-govt);padding:15px 15px 14px}
+.job[data-sec="Private"]{border-left-color:var(--c-pvt)}.job[data-sec="IT"]{border-left-color:var(--c-it)}.job[data-sec="BPO"]{border-left-color:var(--c-bpo)}
+.job h2{font-size:16px}
+.tag.govt{color:var(--c-govt);border-color:color-mix(in srgb,var(--c-govt) 40%,transparent);background:color-mix(in srgb,var(--c-govt) 10%,transparent)}
+.tag.pvt{color:var(--c-pvt);border-color:color-mix(in srgb,var(--c-pvt) 40%,transparent);background:color-mix(in srgb,var(--c-pvt) 10%,transparent)}
+.tag.itc{color:var(--c-it);border-color:color-mix(in srgb,var(--c-it) 40%,transparent);background:color-mix(in srgb,var(--c-it) 10%,transparent)}
+.tag.bpo{color:var(--c-bpo);border-color:color-mix(in srgb,var(--c-bpo) 40%,transparent);background:color-mix(in srgb,var(--c-bpo) 10%,transparent)}
+.d{border-radius:10px;border:1px solid var(--line)}
+.links a{border-radius:11px;padding:9px 14px}
+.links a.primary{background:linear-gradient(135deg,var(--teal),var(--purple));border:0;color:#fff;box-shadow:0 3px 10px color-mix(in srgb,var(--purple) 30%,transparent)}
+details summary{color:var(--teal)}
+.grp{font-size:12.5px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.05em;margin:6px 2px 0}
+.promo{display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(135deg,color-mix(in srgb,var(--teal) 12%,var(--card)),color-mix(in srgb,var(--purple) 12%,var(--card)));border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
+.promo b{display:block;font-size:15px}.promo span{font-size:12.5px;color:var(--mute)}
+.promo button{-webkit-appearance:none;appearance:none;border:0;background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;font:600 13px Inter,sans-serif;padding:9px 14px;border-radius:11px;cursor:pointer;white-space:nowrap;touch-action:manipulation}
+.totop{background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;border:0}
+footer{padding-top:4px}
 </style>
 <script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
 <body>
 <header>
-  <div class="wrap">
+  <div class="hero"><div class="wrap">
     <div class="topbar"><h1>Daily Jobs India</h1><button type="button" class="theme" id="themeBtn">☀️ Light</button></div>
-    <a href="it/" style="display:inline-block;margin:6px 0 4px;font-size:13px;font-weight:600;color:var(--brand)">→ Open IT Jobs Finder (job types, saved &amp; applied tracker)</a>
-    <div class="tabs" id="tabs">
-      <button type="button" class="tab" data-tab="govt">Govt & Walk-ins</button>
-      <button type="button" class="tab" data-tab="it">IT Jobs</button>
-    </div>
+    <div class="sub" id="sub">Govt · Private · IT · BPO — AP & Telangana first</div>
+    <div class="cats" id="cats"></div>
+    <a class="itlink" href="it/">💼 IT Jobs Finder — job types, saved &amp; applied tracker →</a>
+  </div></div>
+  <div class="wrap"><div class="panel">
     <section id="govtHead">
-      <div class="sub" id="sub">Govt & private openings from the news · AP & Telangana first</div>
       <div class="stats" id="stats"></div>
       <div class="controls">
         <input type="search" id="q" placeholder="Search post, organisation, qualification, city…">
-        <div class="chips" id="sectorChips"></div>
         <div class="chips" id="regionChips"></div>
         <div class="chips" id="statusChips"></div>
       </div>
@@ -118,9 +164,10 @@ a{color:var(--brand)}
       </div>
       <div class="stats" id="itStats"></div>
     </section>
-  </div>
+  </div></div>
 </header>
 <main class="wrap">
+  <div class="list" id="itExtra" hidden></div>
   <div class="list" id="list"><div class="empty">Loading jobs…</div></div>
   <div class="list" id="itList" hidden></div>
   <div class="coverage" id="coverage" hidden></div>
@@ -129,7 +176,7 @@ a{color:var(--brand)}
 
 <script>
 const TODAY = (()=>{const d=new Date();d.setHours(0,0,0,0);return d})();
-const state={q:'',sector:'All',region:'All',status:'Open',tab:'govt',stack:'',exp:'Any',city:'All',kind:'All',posted:'Any time'};
+const state={q:'',cat:'All',sector:'All',region:'All',status:'Open',tab:'govt',stack:'',exp:'Any',city:'All',kind:'All',posted:'Any time'};
 let JOBS=[],IT=[],IT_META={};
 
 function parse(s){if(!s)return null;const d=new Date(s+'T00:00:00');return isNaN(d)?null:d}
@@ -156,18 +203,18 @@ function onChip(e){
   if(b.dataset.act==='stack'){toggleStack(b.dataset.v);return}
   state[b.dataset.k]=b.dataset.v;save();render();
 }
+function setCat(c){state.cat=c;state.tab=c==='IT'?'it':'govt';save();try{history.replaceState(null,'','#'+c.toLowerCase())}catch(_){};render();scrollTo({top:0,behavior:'smooth'})}
 function onTab(e){
   let t=e.target;if(t&&t.nodeType!==1)t=t.parentNode;
-  const b=t&&t.closest?t.closest('.tab'):null;if(!b)return;
-  e.preventDefault();state.tab=b.dataset.tab;save();
-  try{history.replaceState(null,'',state.tab==='it'?'#it':'#govt')}catch(_){}
-  render();
+  const b=t&&t.closest?t.closest('[data-cat]'):null;if(!b)return;
+  e.preventDefault();setCat(b.dataset.cat);
 }
 document.addEventListener('click',onChip);
 document.addEventListener('click',onTab);
 function save(){try{localStorage.setItem('djf',JSON.stringify(state))}catch(e){}}
 function load(){try{const s=JSON.parse(localStorage.getItem('djf')||'{}');for(const k of Object.keys(state))if(typeof s[k]==='string')state[k]=s[k]}catch(e){}
-  if(location.hash==='#it')state.tab='it';else if(location.hash==='#govt')state.tab='govt';}
+  const h=location.hash.slice(1).toLowerCase(),m={all:'All',govt:'Govt',private:'Private',it:'IT',bpo:'BPO'};if(m[h])state.cat=m[h];
+  if(!m[state.cat.toLowerCase()])state.cat='All';state.tab=state.cat==='IT'?'it':'govt';}
 
 /* ---------- IT jobs: tech-stack matching ---------- */
 const ALIAS={js:'javascript',ts:'typescript',reactjs:'react','react.js':'react',angularjs:'angular',vue:'vue.js',vuejs:'vue.js',
@@ -268,9 +315,9 @@ function card(j){
   const main=rows.slice(0,4),more=rows.slice(4);
   const dlRow=r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`;
   const web=safeUrl(j.website),src=safeUrl(j.source);
-  return`<article class="job${st==='Closed'?' closed':''}">
+  return`<article class="job${st==='Closed'?' closed':''}" data-sec="${esc(j.sector)}">
     <div class="top"><div><h2>${esc(j.title)}</h2><div class="org">${esc(j.org)}</div></div>${badge(j)}</div>
-    <div class="tags"><span class="tag ${j.sector==='Govt'?'govt':'pvt'}">${esc(j.sector)}</span><span class="tag">${esc(j.region)}</span>${j.added===JOBS_UPDATED?'<span class="tag">New today</span>':''}</div>
+    <div class="tags"><span class="tag ${({Govt:'govt',Private:'pvt',IT:'itc',BPO:'bpo'})[j.sector]||'pvt'}">${({Govt:'🏛 Govt',Private:'🏭 Private',IT:'💻 IT',BPO:'🎧 BPO'})[j.sector]||esc(j.sector)}</span><span class="tag">${esc(j.region)}</span>${j.added===JOBS_UPDATED?'<span class="tag">New today</span>':''}</div>
     <div class="dates">
       <div class="d"><small>Start</small><span>${fmt(j.start)}</span></div>
       <div class="d"><small>Last date</small><span>${fmt(j.end)}</span></div>
@@ -284,21 +331,24 @@ function card(j){
 }
 
 let JOBS_UPDATED='';
+const CATS=[['All','✨','All'],['Govt','🏛','Govt'],['Private','🏭','Private'],['IT','💻','IT'],['BPO','🎧','BPO']];
+function openCount(c){const o=JOBS.filter(j=>status(j)!=='Closed');if(c==='All')return o.length+IT.length;if(c==='IT')return IT.length+o.filter(j=>j.sector==='IT').length;return o.filter(j=>j.sector===c).length}
 function render(){
   const it=state.tab==='it';
-  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===state.tab));
+  document.getElementById('cats').innerHTML=CATS.map(([k,ic,l])=>`<button type="button" class="cat${state.cat===k?' on':''}" data-cat="${k}"><span class="ic">${ic}</span>${l}<small>${openCount(k)} open</small></button>`).join('');
+  const ex=document.getElementById('itExtra'),itNews=JOBS.filter(j=>j.sector==='IT'&&status(j)!=='Closed');
+  ex.hidden=!it||!itNews.length;if(!ex.hidden)ex.innerHTML=`<div class="grp">IT walk-ins & drives from the news</div>${itNews.map(card).join('')}<div class="grp" style="margin-top:8px">IT company career pages</div>`;
   document.getElementById('govtHead').hidden=it;document.getElementById('itHead').hidden=!it;
   document.getElementById('list').hidden=it;document.getElementById('itList').hidden=!it;
   document.getElementById('coverage').hidden=!it||!IT_META.not_covered;
   if(it)renderIT();else renderGovt();
 }
 function renderGovt(){
-  chips(document.getElementById('sectorChips'),'sector',['All','Govt','Private']);
   chips(document.getElementById('regionChips'),'region',['All','Andhra Pradesh','Telangana','All India']);
   chips(document.getElementById('statusChips'),'status',['Open','Closing soon','Upcoming','Closed','Any status']);
   const q=state.q.trim().toLowerCase();
   const list=JOBS.filter(j=>{
-    if(state.sector!=='All'&&j.sector!==state.sector)return false;
+    if(state.cat!=='All'&&j.sector!==state.cat)return false;
     if(state.region!=='All'&&j.region!==state.region)return false;
     const st=status(j);
     if(state.status==='Open'&&!(st==='Open'||st==='Closing soon'))return false;
@@ -309,11 +359,11 @@ function renderGovt(){
     const ra={'Closing soon':0,'Open':1,'Upcoming':2,'Closed':3};
     return(ra[status(a)]-ra[status(b)])||((parse(a.end)||9e15)-(parse(b.end)||9e15));
   });
-  document.getElementById('list').innerHTML=list.length?list.map(card).join(''):'<div class="empty">No jobs match these filters.</div>';
+  const promo=state.cat==='All'&&IT.length?`<div class="promo"><div><b>💻 ${IT.length} IT jobs from company career pages</b><span>Filter by your tech stack and experience</span></div><button type="button" data-cat="IT">View IT →</button></div>`:'';
+  document.getElementById('list').innerHTML=list.length?promo+list.map(card).join(''):promo+'<div class="empty">No jobs match these filters.</div>';
   const c={open:0,soon:0,up:0};JOBS.forEach(j=>{const s=status(j);if(s==='Open')c.open++;if(s==='Closing soon')c.soon++;if(s==='Upcoming')c.up++});
-  const g=JOBS.filter(j=>j.sector==='Govt'&&status(j)!=='Closed').length,p=JOBS.filter(j=>j.sector==='Private'&&status(j)!=='Closed').length;
   document.getElementById('stats').innerHTML=
-    `<div class="stat"><b>${c.open+c.soon}</b>open</div><div class="stat"><b>${c.soon}</b>closing in 7 days</div><div class="stat"><b>${c.up}</b>upcoming</div><div class="stat"><b>${g}</b>govt</div><div class="stat"><b>${p}</b>private</div>`;
+    `<div class="stat"><b>${list.length}</b>shown</div><div class="stat"><b>${c.soon}</b>closing in 7 days</div><div class="stat"><b>${c.up}</b>upcoming</div>`;
 }
 
 load();
@@ -325,7 +375,7 @@ stIn.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===','||e.key===';'
 stIn.addEventListener('input',()=>{if(/[,;]/.test(stIn.value)){const parts=stIn.value.split(/[,;]/);parts.slice(0,-1).forEach(addStack);stIn.value=parts.pop();save();render()}});
 stIn.addEventListener('blur',()=>{if(stIn.value.trim()){addStack(stIn.value);stIn.value='';save();render()}});
 document.getElementById('tagbox').addEventListener('click',e=>{const x=e.target.closest&&e.target.closest('[data-untag]');if(x){const t=stackTerms().filter(v=>canon(v)!==canon(x.dataset.untag));state.stack=t.join(', ');save();render();return}stIn.focus()});
-window.addEventListener('hashchange',()=>{if(location.hash==='#it'||location.hash==='#govt'){state.tab=location.hash.slice(1);render()}});
+window.addEventListener('hashchange',()=>{const m={all:'All',govt:'Govt',private:'Private',it:'IT',bpo:'BPO'}[location.hash.slice(1).toLowerCase()];if(m&&m!==state.cat){state.cat=m;state.tab=m==='IT'?'it':'govt';render()}});
 render();
 fetch('it_jobs.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
   IT=(d.jobs||[]).map(j=>({...j,skills:Array.isArray(j.skills)?j.skills:[]}));IT_META=d;
@@ -334,7 +384,7 @@ fetch('it_jobs.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
 }).catch(()=>{document.getElementById('itList').innerHTML='<div class="empty">Could not load IT jobs.</div>'});
 fetch('jobs.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
   JOBS=d.jobs||[];JOBS_UPDATED=d.updated||'';
-  document.getElementById('sub').textContent=`Govt & private openings from the news · ${d.focus||''} · Updated ${fmt(d.updated)}`;
+  document.getElementById('sub').textContent=`Govt · Private · IT · BPO · ${d.focus||''} · Updated ${fmt(d.updated)}`;
   render();
 }).catch(()=>{document.getElementById('list').innerHTML='<div class="empty">Could not load the job list.</div>'});
 </script>
