@@ -17,7 +17,7 @@ h1{margin:0;font-size:20px;letter-spacing:-.01em}
 .places{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:14px 0 4px}
 .place{touch-action:manipulation;-webkit-appearance:none;appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:8px 4px;font:600 13px Inter,sans-serif;cursor:pointer;min-height:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
 .place small{font-weight:500;color:var(--mute);font-size:11.5px}
-.place.on{background:#e8efff;border-color:#a9c0f7;color:#1d4ed8;font-weight:600}.place.on small{color:#3b5fc0}
+.place.on{background:var(--soft);border-color:var(--softline);color:var(--softink);font-weight:600}.place.on small{color:var(--softink)}
 @media (max-width:620px){.places{grid-template-columns:repeat(4,1fr)}.place{min-height:50px;font-size:12.5px}}
 .districts{display:flex;gap:6px;overflow-x:auto;padding:6px 0 2px;scrollbar-width:thin}
 .districts .chip{flex:none}
@@ -25,8 +25,8 @@ h1{margin:0;font-size:20px;letter-spacing:-.01em}
 .chip .n{font-size:11px;opacity:.75;margin-left:3px}
 .tagbox{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:6px 8px;border:1px solid var(--line);border-radius:10px;background:var(--card);min-height:44px;cursor:text}
 .tagbox:focus-within{border-color:var(--brand);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 18%,transparent)}
-.tag{display:inline-flex;align-items:center;gap:4px;background:#e8efff;color:#1d4ed8;border:1px solid #a9c0f7;border-radius:8px;padding:4px 4px 4px 10px;font-size:13px;font-weight:600}
-.tag button{-webkit-appearance:none;appearance:none;border:0;background:#d3e0ff;color:#1d4ed8;width:22px;height:22px;border-radius:6px;font-size:14px;line-height:1;cursor:pointer;touch-action:manipulation}
+.tag{display:inline-flex;align-items:center;gap:4px;background:var(--soft);color:var(--softink);border:1px solid var(--softline);border-radius:8px;padding:4px 4px 4px 10px;font-size:13px;font-weight:600}
+.tag button{-webkit-appearance:none;appearance:none;border:0;background:var(--softbtn);color:var(--softink);width:22px;height:22px;border-radius:6px;font-size:14px;line-height:1;cursor:pointer;touch-action:manipulation}
 .tagbox input{flex:1;min-width:120px;border:0;padding:6px 2px;background:transparent;box-shadow:none;outline:none}
 .sugg{display:flex;gap:6px;flex-wrap:wrap}
 .sugg:empty{display:none}
@@ -38,7 +38,7 @@ h1{margin:0;font-size:20px;letter-spacing:-.01em}
 input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chip{touch-action:manipulation;-webkit-appearance:none;appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 11px;font:500 13px Inter,sans-serif;cursor:pointer;min-height:32px}
-.chip.on{background:#e8efff;border-color:#a9c0f7;color:#1d4ed8;font-weight:600}
+.chip.on{background:var(--soft);border-color:var(--softline);color:var(--softink);font-weight:600}
 .chip.add::before{content:"+ ";opacity:.55}
 details.more summary{cursor:pointer;font-weight:600;font-size:13px;color:var(--brand);list-style:none}
 details.more summary::-webkit-details-marker{display:none}
@@ -93,7 +93,7 @@ main{padding:14px 0 40px}
 .reset{background:none;border:1px solid var(--bad);color:var(--bad);border-radius:999px;padding:3px 10px;font:600 12.5px Inter,sans-serif;cursor:pointer}
 .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
 .bd{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--line)}
-.bd.Full-time{color:var(--ok)}.bd.Part-time,.bd.Freelance{color:#7c3aed}.bd.Contract{color:var(--mid)}.bd.Internship{color:var(--blue)}.bd.walk{color:var(--bad)}
+.bd.Full-time{color:var(--ok)}.bd.Part-time,.bd.Freelance{color:var(--purple)}.bd.Contract{color:var(--mid)}.bd.Internship{color:var(--blue)}.bd.walk{color:var(--bad)}
 .acts{display:flex;gap:6px;margin-top:8px}
 .acts button{flex:1;-webkit-appearance:none;appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:7px 4px;font:600 12.5px Inter,sans-serif;cursor:pointer;touch-action:manipulation;min-height:36px}
 .acts button.on{background:color-mix(in srgb,var(--ok) 14%,transparent);border-color:var(--ok);color:var(--ok)}
@@ -103,12 +103,20 @@ main{padding:14px 0 40px}
 .res a small{display:block;font-weight:400;color:var(--mute)}
 .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:13px;z-index:9;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.show{opacity:1}
+html[data-theme="dark"]{color-scheme:dark;--bg:#181b22;--card:#22262f;--ink:#e6e9ef;--mute:#a3aab6;--line:#343a46;--brand:#6f95f2;--ok:#4ade80;--mid:#fbbf24;--bad:#f87171;--blue:#7cabff;--govt:#4ade80;--pvt:#c4a5ff;--warn:#fb923c;--soon:#fbbf24;--up:#7cabff;--closed:#8b93a1;--soft:#2a3550;--softline:#4a5f93;--softink:#b9cdff;--softbtn:#3a4a70;--purple:#c4a5ff}
+html{--soft:#e8efff;--softline:#a9c0f7;--softink:#1d4ed8;--softbtn:#d3e0ff;--purple:#7c3aed}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme{-webkit-appearance:none;appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 12px;font:600 13px Inter,system-ui,sans-serif;cursor:pointer;touch-action:manipulation;min-height:36px;white-space:nowrap}
+.totop{position:fixed;right:14px;bottom:18px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;z-index:8;opacity:0;pointer-events:none;transition:opacity .2s;touch-action:manipulation}
+.totop.show{opacity:1;pointer-events:auto}
+a{color:var(--brand)}
 </style>
+<script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <h1>IT Jobs Finder</h1>
+    <div class="topbar"><h1>IT Jobs Finder</h1><button type="button" class="theme" id="themeBtn">☀️ Light</button></div>
     <div class="sub" id="sub">Telangana · Andhra Pradesh · Bengaluru · Chennai · Remote</div>
     <div class="views" id="views"></div>
     <div class="search"><input id="q" type="search" placeholder="Search role, company, skill, city…" autocomplete="off" enterkeyhint="search"></div>
@@ -383,6 +391,19 @@ fetch('jobs.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{JOBS=(d.jobs||[
   document.getElementById('sub').textContent=`Telangana · Andhra Pradesh · Bengaluru · Chennai · Remote · ${JOBS.length} jobs · Updated ${fmt(d.updated)}`;
   const cov=document.getElementById('coverage');if(d.not_covered){cov.hidden=false;cov.innerHTML='<h3>Coverage note</h3>'+esc(d.not_covered)}
   render();}).catch(()=>{document.getElementById('out').innerHTML='<div class="empty">Could not load jobs.</div>'});
+</script>
+<button type="button" class="totop" id="totop" aria-label="Back to top">↑</button>
+<script>
+(function(){
+ var L={light:'☀️ Light',dark:'🌙 Dark',auto:'🌓 Auto'},N={light:'dark',dark:'auto',auto:'light'};
+ function get(){try{return localStorage.getItem('jp_theme')||'light'}catch(e){return 'light'}}
+ function apply(m){var t=m==='auto'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):m;document.documentElement.dataset.theme=t;var b=document.getElementById('themeBtn');if(b){b.textContent=L[m];b.title='Theme: '+m+' (tap to change)'}}
+ var b=document.getElementById('themeBtn');apply(get());
+ if(b)b.addEventListener('click',function(e){e.stopPropagation();var m=N[get()]||'light';try{localStorage.setItem('jp_theme',m)}catch(_){}apply(m)});
+ try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(get()==='auto')apply('auto')})}catch(_){}
+ var tt=document.getElementById('totop');addEventListener('scroll',function(){tt.classList.toggle('show',scrollY>600)},{passive:true});
+ tt.addEventListener('click',function(e){e.stopPropagation();scrollTo({top:0,behavior:'smooth'})});
+})();
 </script>
 </body>
 </html>
