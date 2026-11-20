@@ -9,6 +9,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: publish
@@ -17,6 +19,9 @@ concurrency:
 jobs:
   update-and-publish:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,3 +51,13 @@ jobs:
           git config user.email "jobs-bot@users.noreply.github.com"
           git subtree split --prefix site -b gh-pages-tmp
           git push -f origin gh-pages-tmp:gh-pages
+      # Also deploy via GitHub Actions, so the site updates whichever
+      # Pages source is chosen (GitHub Actions or the gh-pages branch).
+      - uses: actions/configure-pages@v5
+        continue-on-error: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
