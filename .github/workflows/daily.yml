@@ -1,4 +1,4 @@
-name: Daily jobs update + deploy
+name: job-portal-self daily update + deploy
 
 on:
   schedule:

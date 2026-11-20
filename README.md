@@ -1,4 +1,8 @@
-# Daily Jobs India
+# job-portal-self
+
+Self-hosted job portal: daily govt/private jobs (AP & Telangana focus) and an IT Jobs Finder.
+
+**Live site (GitHub Pages):** https://sivamani40.github.io/job-portal-self/ · IT Jobs Finder: https://sivamani40.github.io/job-portal-self/it/
 
 **Live pages:** `site/index.html` (Daily Jobs India — govt, private & IT) and `site/it/` (IT Jobs Finder — job types, places, AP districts, saved/applied tracker).
 
@@ -48,7 +52,7 @@ cd site && python -m http.server 8000       # open http://localhost:8000
 The `site/` folder is plain static files, so you can also host it on Netlify, Vercel, Cloudflare Pages or any VPS. On a VPS, set up a cron job:
 
 ```
-47 5 * * * cd /opt/jobs-india && ANTHROPIC_API_KEY=... /usr/bin/python3 run_daily.py >> run.log 2>&1
+47 5 * * * cd /opt/job-portal-self && ANTHROPIC_API_KEY=... /usr/bin/python3 run_daily.py >> run.log 2>&1
 ```
 
 ## Customise
