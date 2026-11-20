@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Jobs India — AP & Telangana focus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7f9;--card:#fff;--ink:#14171f;--mute:#5d6472;--line:#e3e6eb;
+  --brand:#1f4fd1;--govt:#0b7a4b;--pvt:#8a3ffc;--warn:#c2410c;--soon:#b45309;--up:#2563eb;--closed:#9aa1ad;
+}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#171a21;--ink:#e8eaee;--mute:#9aa1ad;--line:#272b34;--brand:#7aa2ff}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.45}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:18px 16px 12px}
+.wrap{max-width:1000px;margin:0 auto}
+h1{margin:0;font-size:20px;letter-spacing:-.01em}
+.sub{color:var(--mute);font-size:13px;margin-top:2px}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 10px}
+.stat{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:12px;color:var(--mute)}
+.stat b{color:var(--ink);font-size:15px;margin-right:4px}
+.controls{display:flex;flex-direction:column;gap:8px}
+input[type=search]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+.chips{display:flex;gap:6px;flex-wrap:wrap;position:relative;z-index:2}
+.chip{flex:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;-webkit-appearance:none;appearance:none;min-height:34px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;font:500 13px Inter,sans-serif;cursor:pointer}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff}
+main{padding:14px 16px 40px}
+.list{display:grid;gap:10px}
+.job{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.top{display:flex;gap:10px;justify-content:space-between;align-items:flex-start}
+.job h2{font-size:15.5px;margin:0 0 3px;line-height:1.3}
+.org{color:var(--mute);font-size:13px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.tag{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--mute)}
+.tag.govt{color:var(--govt);border-color:color-mix(in srgb,var(--govt) 35%,transparent)}
+.tag.pvt{color:var(--pvt);border-color:color-mix(in srgb,var(--pvt) 35%,transparent)}
+.badge{flex:none;text-align:right;font-size:12px;font-weight:700;padding:4px 9px;border-radius:8px;white-space:nowrap}
+.b-open{background:color-mix(in srgb,var(--govt) 14%,transparent);color:var(--govt)}
+.b-soon{background:color-mix(in srgb,var(--warn) 14%,transparent);color:var(--warn)}
+.b-up{background:color-mix(in srgb,var(--up) 14%,transparent);color:var(--up)}
+.b-closed{background:var(--bg);color:var(--closed)}
+.dates{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:8px 0}
+.d{background:var(--bg);border-radius:8px;padding:6px 8px}
+.d small{display:block;color:var(--mute);font-size:11px}
+.d span{font-weight:600;font-size:13px}
+dl{display:grid;grid-template-columns:110px 1fr;gap:4px 10px;margin:8px 0 0;font-size:13.5px}
+dt{color:var(--mute)}
+dd{margin:0}
+details summary{cursor:pointer;color:var(--brand);font-weight:600;font-size:13px;margin-top:8px;list-style:none}
+details summary::-webkit-details-marker{display:none}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.links a{font-size:13px;font-weight:600;text-decoration:none;padding:7px 12px;border-radius:9px;border:1px solid var(--line);color:var(--ink)}
+.links a.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.note{margin-top:8px;font-size:12.5px;color:var(--soon);background:color-mix(in srgb,var(--soon) 10%,transparent);padding:6px 8px;border-radius:8px}
+.empty{text-align:center;color:var(--mute);padding:40px 0}
+footer{color:var(--mute);font-size:12px;text-align:center;padding:10px 16px 30px}
+.job.closed{opacity:.6}
+.tabs{display:flex;gap:4px;margin:12px 0 10px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px}
+.tab{flex:1;touch-action:manipulation;-webkit-appearance:none;appearance:none;border:0;background:transparent;color:var(--mute);font:600 14px Inter,sans-serif;padding:9px 10px;border-radius:9px;cursor:pointer;min-height:38px}
+.tab.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.lbl{font-size:12px;font-weight:600;color:var(--mute);margin-top:4px}
+.chip.sm{min-height:30px;padding:4px 10px;font-size:12.5px}
+.chip.add::before{content:"+ ";opacity:.6}
+.skills{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0 2px}
+.sk{font-size:12px;padding:2px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--mute)}
+.sk.hit{background:color-mix(in srgb,var(--govt) 14%,transparent);border-color:color-mix(in srgb,var(--govt) 45%,transparent);color:var(--govt);font-weight:600}
+.meta{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:13px;color:var(--mute);margin-top:6px}
+.meta b{color:var(--ink);font-weight:600}
+.b-match{background:color-mix(in srgb,var(--govt) 14%,transparent);color:var(--govt)}
+.b-none{background:var(--bg);color:var(--mute)}
+.coverage{margin-top:14px;font-size:12.5px;color:var(--mute);background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:10px 12px}
+@media (max-width:520px){dl{grid-template-columns:92px 1fr}.dates{grid-template-columns:1fr 1fr}.dates .d:last-child{grid-column:span 2}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Daily Jobs India</h1>
+    <a href="it/" style="display:inline-block;margin:6px 0 4px;font-size:13px;font-weight:600;color:#1f4fd1">→ Open IT Jobs Finder (job types, saved &amp; applied tracker)</a>
+    <div class="tabs" id="tabs">
+      <button type="button" class="tab" data-tab="govt">Govt & Walk-ins</button>
+      <button type="button" class="tab" data-tab="it">IT Jobs</button>
+    </div>
+    <section id="govtHead">
+      <div class="sub" id="sub">Govt & private openings from the news · AP & Telangana first</div>
+      <div class="stats" id="stats"></div>
+      <div class="controls">
+        <input type="search" id="q" placeholder="Search post, organisation, qualification, city…">
+        <div class="chips" id="sectorChips"></div>
+        <div class="chips" id="regionChips"></div>
+        <div class="chips" id="statusChips"></div>
+      </div>
+    </section>
+    <section id="itHead" hidden>
+      <div class="sub" id="itSub">IT company career pages · Hyderabad, Vizag & Remote</div>
+      <div class="controls">
+        <label class="lbl" for="stack">Your tech stack</label>
+        <input type="search" id="stack" placeholder="e.g. Java, Spring Boot, React, AWS" autocomplete="off">
+        <div class="chips" id="quickStack"></div>
+        <div class="lbl">Experience</div><div class="chips" id="expChips"></div>
+        <div class="lbl">Location</div><div class="chips" id="cityChips"></div>
+        <div class="lbl">Company type · Posted</div><div class="chips" id="kindChips"></div>
+      </div>
+      <div class="stats" id="itStats"></div>
+    </section>
+  </div>
+</header>
+<main class="wrap">
+  <div class="list" id="list"><div class="empty">Loading jobs…</div></div>
+  <div class="list" id="itList" hidden></div>
+  <div class="coverage" id="coverage" hidden></div>
+</main>
+<footer class="wrap">Compiled daily from news and job portals. Always confirm on the official website before applying — dates and posts can change by corrigendum.</footer>
+
+<script>
+const TODAY = (()=>{const d=new Date();d.setHours(0,0,0,0);return d})();
+const state={q:'',sector:'All',region:'All',status:'Open',tab:'govt',stack:'',exp:'Any',city:'All',kind:'All',posted:'Any time'};
+let JOBS=[],IT=[],IT_META={};
+
+function parse(s){if(!s)return null;const d=new Date(s+'T00:00:00');return isNaN(d)?null:d}
+function fmt(s){const d=parse(s);return d?d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}):'—'}
+function daysLeft(j){const e=parse(j.end);return e?Math.round((e-TODAY)/864e5):null}
+function status(j){
+  const s=parse(j.start),e=parse(j.end);
+  if(e&&e<TODAY)return'Closed';
+  if(s&&s>TODAY)return'Upcoming';
+  const dl=daysLeft(j);
+  if(dl!==null&&dl<=7)return'Closing soon';
+  return'Open';
+}
+function esc(t){return String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function safeUrl(u){return /^https?:\/\//.test(u||'')?u:''}
+
+function chips(el,key,opts){
+  el.innerHTML=opts.map(o=>`<button type="button" class="chip${state[key]===o?' on':''}" data-k="${key}" data-v="${esc(o)}">${esc(o)}</button>`).join('');
+}
+function onChip(e){
+  let t=e.target;if(t&&t.nodeType!==1)t=t.parentNode;
+  const b=t&&t.closest?t.closest('.chip'):null;if(!b)return;
+  e.preventDefault();
+  if(b.dataset.act==='stack'){toggleStack(b.dataset.v);return}
+  state[b.dataset.k]=b.dataset.v;save();render();
+}
+function onTab(e){
+  let t=e.target;if(t&&t.nodeType!==1)t=t.parentNode;
+  const b=t&&t.closest?t.closest('.tab'):null;if(!b)return;
+  e.preventDefault();state.tab=b.dataset.tab;save();
+  try{history.replaceState(null,'',state.tab==='it'?'#it':'#govt')}catch(_){}
+  render();
+}
+document.addEventListener('click',onChip);
+document.addEventListener('click',onTab);
+function save(){try{localStorage.setItem('djf',JSON.stringify(state))}catch(e){}}
+function load(){try{const s=JSON.parse(localStorage.getItem('djf')||'{}');for(const k of Object.keys(state))if(typeof s[k]==='string')state[k]=s[k]}catch(e){}
+  if(location.hash==='#it')state.tab='it';else if(location.hash==='#govt')state.tab='govt';}
+
+/* ---------- IT jobs: tech-stack matching ---------- */
+const ALIAS={js:'javascript',ts:'typescript',reactjs:'react','react.js':'react',angularjs:'angular',vue:'vue.js',vuejs:'vue.js',
+  node:'node.js',nodejs:'node.js',dotnet:'.net','dot net':'.net','asp.net':'.net','.net core':'.net','net core':'.net',netcore:'.net',
+  csharp:'c#','c sharp':'c#',cpp:'c++',golang:'go','gen ai':'genai','generative ai':'genai',llms:'llm',ml:'machine learning',
+  mlops:'mlops',k8s:'kubernetes','google cloud':'gcp','amazon web services':'aws',springboot:'spring boot',spring:'spring boot',
+  rest:'rest api',api:'rest api','rest apis':'rest api',py:'python',pyspark:'spark',sdet:'test automation',qa:'testing',
+  'power bi':'power bi',powerbi:'power bi',sfdc:'salesforce',ai:'ai','agentic':'agentic ai','agents':'agentic ai',rag:'llm',
+  'microservice':'microservices',devsecops:'devops','ci cd':'ci/cd',cicd:'ci/cd',oracle:'oracle',sap:'sap',vlsi:'vlsi'};
+function canon(s){s=String(s||'').toLowerCase().trim().replace(/\s+/g,' ');return ALIAS[s]||s}
+function words(s){return ' '+canon(s).replace(/[()\/,]/g,' ').replace(/\s+/g,' ')+' '}
+function termHits(term,job){
+  const t=canon(term);if(!t)return null;
+  const hit=job.skills.find(sk=>{const c=canon(sk);return c===t||words(sk).includes(' '+t+' ')});
+  if(hit)return hit;
+  if(t.length>2&&words(job.title).includes(' '+t+' '))return '(title)';
+  return null;
+}
+function stackTerms(){return state.stack.split(/[,;\n]+/).map(s=>s.trim()).filter(Boolean)}
+function toggleStack(v){
+  const terms=stackTerms(),i=terms.findIndex(t=>canon(t)===canon(v));
+  if(i>=0)terms.splice(i,1);else terms.push(v);
+  state.stack=terms.join(', ');document.getElementById('stack').value=state.stack;save();render();
+}
+function expBand(j){
+  const lo=j.expMin,hi=j.expMax;
+  const ranges={'Fresher (0–2)':[0,2],'3–5 yrs':[3,5],'6–10 yrs':[6,10],'10+ yrs':[10,99]}[state.exp];
+  if(!ranges)return true;
+  if(lo==null&&hi==null)return true; // unknown experience: keep, user can judge
+  const a=lo??0,b=hi??(lo!=null?lo+6:99);
+  return a<=ranges[1]&&b>=ranges[0];
+}
+function expText(j){
+  if(j.expMin==null&&j.expMax==null)return 'Not stated';
+  if(j.expMin===0&&(j.expMax===0||j.expMax==null))return 'Fresher';
+  if(j.expMax==null)return `${j.expMin}+ yrs`;
+  return `${j.expMin}–${j.expMax} yrs`;
+}
+function ago(s){const d=parse(s);if(!d)return 'Date not shown';const n=Math.round((TODAY-d)/864e5);return n<=0?'Today':n===1?'Yesterday':n<31?`${n} days ago`:fmt(s)}
+function itCard(r){
+  const j=r.job,terms=r.terms;
+  const hitSkills=new Set(r.hits.filter(h=>h&&h!=='(title)'));
+  const apply=safeUrl(j.apply),src=safeUrl(j.source);
+  const b=terms.length?(r.n?`<div class="badge b-match">${r.n}/${terms.length} match</div>`:`<div class="badge b-none">No match</div>`):'';
+  return `<article class="job">
+    <div class="top"><div><h2>${esc(j.title)}</h2><div class="org">${esc(j.company)} · ${esc(j.kind)}</div></div>${b}</div>
+    <div class="meta"><span>📍 <b>${esc(j.city)}</b> · ${esc(j.mode)}</span><span>💼 <b>${expText(j)}</b></span><span>🕒 ${ago(j.posted)}</span>${j.salary?`<span>💰 <b>${esc(j.salary)}</b></span>`:''}${j.applyBy?`<span>⏰ Walk-in/apply by <b>${fmt(j.applyBy)}</b></span>`:''}</div>
+    <div class="skills">${j.skills.map(s=>`<span class="sk${hitSkills.has(s)?' hit':''}">${esc(s)}</span>`).join('')}</div>
+    ${j.note?`<div class="note">ℹ ${esc(j.note)}</div>`:''}
+    <div class="links">${apply?`<a class="primary" href="${apply}" target="_blank" rel="noopener">Apply on careers site</a>`:''}${src?`<a href="${src}" target="_blank" rel="noopener">${apply?'Listing':'View & apply'}</a>`:''}</div>
+  </article>`;
+}
+function renderIT(){
+  const pop=['Java','Python','React','Angular','.NET','JavaScript','AWS','Azure','GCP','GenAI','Machine Learning','DevOps','Spring Boot','SQL','Selenium','C++','Embedded','Oracle','SAP'];
+  const on=new Set(stackTerms().map(canon));
+  document.getElementById('quickStack').innerHTML=pop.map(p=>`<button type="button" class="chip sm${on.has(canon(p))?' on':' add'}" data-act="stack" data-v="${esc(p)}">${esc(p)}</button>`).join('');
+  chips(document.getElementById('expChips'),'exp',['Any','Fresher (0–2)','3–5 yrs','6–10 yrs','10+ yrs']);
+  chips(document.getElementById('cityChips'),'city',['All','Hyderabad','Visakhapatnam','Remote India']);
+  const kc=document.getElementById('kindChips');
+  kc.innerHTML=['All','IT Services','GCC / Product'].map(o=>`<button type="button" class="chip${state.kind===o?' on':''}" data-k="kind" data-v="${esc(o)}">${esc(o)}</button>`).join('')+
+    ['Any time','Last 7 days','Last 30 days'].map(o=>`<button type="button" class="chip${state.posted===o?' on':''}" data-k="posted" data-v="${esc(o)}">${esc(o)}</button>`).join('');
+  const terms=stackTerms();
+  const maxAge={'Last 7 days':7,'Last 30 days':30}[state.posted];
+  const rows=IT.filter(j=>{
+    if(state.city!=='All'&&j.city!==state.city)return false;
+    if(state.kind!=='All'&&j.kind!==state.kind)return false;
+    if(!expBand(j))return false;
+    if(maxAge){const d=parse(j.posted);if(!d||(TODAY-d)/864e5>maxAge)return false}
+    return true;
+  }).map(job=>{const hits=terms.map(t=>termHits(t,job));return{job,terms,hits,n:hits.filter(Boolean).length}})
+    .filter(r=>!terms.length||r.n>0)
+    .sort((a,b)=>(b.n-a.n)||((parse(b.job.posted)||0)-(parse(a.job.posted)||0)));
+  document.getElementById('itList').innerHTML=rows.length?rows.map(itCard).join(''):
+    `<div class="empty">${terms.length?'No jobs match this stack with these filters. Try fewer skills or set Experience to Any.':'No jobs match these filters.'}</div>`;
+  const cos=new Set(IT.map(j=>j.company)).size;
+  document.getElementById('itStats').innerHTML=`<div class="stat"><b>${rows.length}</b>${terms.length?'matching':'shown'}</div><div class="stat"><b>${IT.length}</b>IT jobs</div><div class="stat"><b>${cos}</b>companies</div>`;
+  const cov=document.getElementById('coverage');
+  cov.innerHTML=IT_META.not_covered?`<b>Coverage note:</b> ${esc(IT_META.not_covered)}`:'';
+}
+
+function badge(j){
+  const st=status(j),dl=daysLeft(j);
+  if(st==='Closed')return`<div class="badge b-closed">Closed</div>`;
+  if(st==='Upcoming')return`<div class="badge b-up">Opens ${fmt(j.start)}</div>`;
+  const cls=st==='Closing soon'?'b-soon':'b-open';
+  const txt=dl===0?'Last day today':dl===1?'1 day left':`${dl} days left`;
+  return`<div class="badge ${cls}">${txt}</div>`;
+}
+
+function card(j){
+  const st=status(j);
+  const rows=[
+    ['Posts',j.posts],['Roles',j.roles],['Qualification',j.qualification],
+    ['Experience',j.experience],['Age limit',j.age],['Fee',j.fee],['Salary',j.salary],
+    ['Selection',j.selection],['How to apply',j.apply],['Where',j.location]
+  ].filter(r=>r[1]&&r[1]!=='—');
+  const main=rows.slice(0,4),more=rows.slice(4);
+  const dlRow=r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`;
+  const web=safeUrl(j.website),src=safeUrl(j.source);
+  return`<article class="job${st==='Closed'?' closed':''}">
+    <div class="top"><div><h2>${esc(j.title)}</h2><div class="org">${esc(j.org)}</div></div>${badge(j)}</div>
+    <div class="tags"><span class="tag ${j.sector==='Govt'?'govt':'pvt'}">${esc(j.sector)}</span><span class="tag">${esc(j.region)}</span>${j.added===JOBS_UPDATED?'<span class="tag">New today</span>':''}</div>
+    <div class="dates">
+      <div class="d"><small>Start</small><span>${fmt(j.start)}</span></div>
+      <div class="d"><small>Last date</small><span>${fmt(j.end)}</span></div>
+      <div class="d"><small>Where</small><span>${esc((j.location||'').split('·')[0])}</span></div>
+    </div>
+    <dl>${main.map(dlRow).join('')}</dl>
+    ${more.length?`<details><summary>More details ▾</summary><dl>${more.map(dlRow).join('')}</dl></details>`:''}
+    ${j.note?`<div class="note">⚠ ${esc(j.note)}</div>`:''}
+    <div class="links">${web?`<a class="primary" href="${web}" target="_blank" rel="noopener">Official site</a>`:''}${src?`<a href="${src}" target="_blank" rel="noopener">News source</a>`:''}</div>
+  </article>`;
+}
+
+let JOBS_UPDATED='';
+function render(){
+  const it=state.tab==='it';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===state.tab));
+  document.getElementById('govtHead').hidden=it;document.getElementById('itHead').hidden=!it;
+  document.getElementById('list').hidden=it;document.getElementById('itList').hidden=!it;
+  document.getElementById('coverage').hidden=!it||!IT_META.not_covered;
+  if(it)renderIT();else renderGovt();
+}
+function renderGovt(){
+  chips(document.getElementById('sectorChips'),'sector',['All','Govt','Private']);
+  chips(document.getElementById('regionChips'),'region',['All','Andhra Pradesh','Telangana','All India']);
+  chips(document.getElementById('statusChips'),'status',['Open','Closing soon','Upcoming','Closed','Any status']);
+  const q=state.q.trim().toLowerCase();
+  const list=JOBS.filter(j=>{
+    if(state.sector!=='All'&&j.sector!==state.sector)return false;
+    if(state.region!=='All'&&j.region!==state.region)return false;
+    const st=status(j);
+    if(state.status==='Open'&&!(st==='Open'||st==='Closing soon'))return false;
+    if(state.status!=='Open'&&state.status!=='Any status'&&st!==state.status)return false;
+    if(q&&!Object.values(j).join(' ').toLowerCase().includes(q))return false;
+    return true;
+  }).sort((a,b)=>{
+    const ra={'Closing soon':0,'Open':1,'Upcoming':2,'Closed':3};
+    return(ra[status(a)]-ra[status(b)])||((parse(a.end)||9e15)-(parse(b.end)||9e15));
+  });
+  document.getElementById('list').innerHTML=list.length?list.map(card).join(''):'<div class="empty">No jobs match these filters.</div>';
+  const c={open:0,soon:0,up:0};JOBS.forEach(j=>{const s=status(j);if(s==='Open')c.open++;if(s==='Closing soon')c.soon++;if(s==='Upcoming')c.up++});
+  const g=JOBS.filter(j=>j.sector==='Govt'&&status(j)!=='Closed').length,p=JOBS.filter(j=>j.sector==='Private'&&status(j)!=='Closed').length;
+  document.getElementById('stats').innerHTML=
+    `<div class="stat"><b>${c.open+c.soon}</b>open</div><div class="stat"><b>${c.soon}</b>closing in 7 days</div><div class="stat"><b>${c.up}</b>upcoming</div><div class="stat"><b>${g}</b>govt</div><div class="stat"><b>${p}</b>private</div>`;
+}
+
+load();
+document.getElementById('q').value=state.q||'';
+document.getElementById('q').addEventListener('input',e=>{state.q=e.target.value;save();render()});
+document.getElementById('stack').value=state.stack||'';
+document.getElementById('stack').addEventListener('input',e=>{state.stack=e.target.value;save();render()});
+window.addEventListener('hashchange',()=>{if(location.hash==='#it'||location.hash==='#govt'){state.tab=location.hash.slice(1);render()}});
+render();
+fetch('it_jobs.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
+  IT=(d.jobs||[]).map(j=>({...j,skills:Array.isArray(j.skills)?j.skills:[]}));IT_META=d;
+  document.getElementById('itSub').textContent=`${d.scope||''} · Updated ${fmt(d.updated)}`;
+  render();
+}).catch(()=>{document.getElementById('itList').innerHTML='<div class="empty">Could not load IT jobs.</div>'});
+fetch('jobs.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
+  JOBS=d.jobs||[];JOBS_UPDATED=d.updated||'';
+  document.getElementById('sub').textContent=`Govt & private openings from the news · ${d.focus||''} · Updated ${fmt(d.updated)}`;
+  render();
+}).catch(()=>{document.getElementById('list').innerHTML='<div class="empty">Could not load the job list.</div>'});
+</script>
+</body>
+</html>

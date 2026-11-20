@@ -1,0 +1,32 @@
+{
+  "_comment": "Edit feeds and keywords freely. Google News RSS search feeds work without an API key.",
+  "model": "claude-haiku-5-5",
+  "max_articles_per_run": 60,
+  "lookback_days": 3,
+  "it_max_age_days": 45,
+  "it_sources": [
+    {"type": "smartrecruiters", "company": "ServiceNow", "id": "ServiceNow"},
+    {"type": "amazon", "company": "Amazon"},
+    {"type": "lever", "company": "Sophos", "id": "sophos"},
+    {"_comment": "Add more: {\"type\": \"greenhouse\", \"company\": \"Name\", \"id\": \"boardtoken\"} — find the token in the company's boards.greenhouse.io URL"}
+  ],
+  "feeds": [
+    "https://news.google.com/rss/search?q=APPSC+notification&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=TGPSC+notification&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=Andhra+Pradesh+recruitment+apply+online&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=Telangana+recruitment+apply+online&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=Visakhapatnam+recruitment&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=Hyderabad+walk-in+drive&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=Vizag+walk-in+interview&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=RRB+recruitment+notification&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=SSC+notification+apply+online&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=bank+recruitment+notification+India&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=PSU+recruitment+last+date&hl=en-IN&gl=IN&ceid=IN:en",
+    "https://news.google.com/rss/search?q=hiring+freshers+Hyderabad&hl=en-IN&gl=IN&ceid=IN:en"
+  ],
+  "must_match_any": ["recruit", "notification", "vacanc", "walk-in", "walkin", "hiring", "apply", "posts", "jobs", "apprentice", "job mela"],
+  "region_keywords": {
+    "Andhra Pradesh": ["andhra", "appsc", "ap ", "vizag", "visakhapatnam", "vijayawada", "guntur", "tirupati", "kakinada", "nellore", "kurnool", "amaravati", "parawada"],
+    "Telangana": ["telangana", "tgpsc", "tspsc", "hyderabad", "secunderabad", "warangal", "sangareddy", "karimnagar", "nizamabad", "tg "]
+  }
+}

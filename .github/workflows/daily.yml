@@ -1,0 +1,51 @@
+name: Daily jobs update + deploy
+
+on:
+  schedule:
+    - cron: "17 0 * * *"   # 05:47 IST every day
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run pipeline (needs ANTHROPIC_API_KEY secret; skipped if missing)
+        if: github.event_name != 'push'
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then echo "No ANTHROPIC_API_KEY secret - keeping current data"; exit 0; fi
+          python run_daily.py
+      - name: Commit updated data
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "jobs-bot"
+          git config user.email "jobs-bot@users.noreply.github.com"
+          git add data/jobs.db site/jobs.json site/it_jobs.json || true
+          git diff --cached --quiet || git commit -m "Daily jobs update $(date +%F)"
+          git push || true
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
