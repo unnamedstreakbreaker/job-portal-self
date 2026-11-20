@@ -206,6 +206,12 @@ html[data-theme="dark"] .sitefoot{background:linear-gradient(135deg,#0b4f4a,#115
   .job .links{margin-top:auto;padding-top:10px}
 }
 @media (min-width:1024px){#side .places{grid-template-columns:repeat(3,1fr)}#side .search{margin-top:0}#side .types{flex-wrap:wrap}#side .box{margin-top:12px;box-shadow:none;background:var(--bg)}#side .row2{grid-template-columns:1fr 100px}header .views{max-width:640px}}
+
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row dense;gap:6px}
+.tile{background:var(--card);border:1px solid color-mix(in srgb,var(--teal) 25%,var(--line));border-radius:10px;padding:7px 9px;min-width:0;overflow-wrap:anywhere}
+.tile.wide{grid-column:1/-1}
+.tile small{display:block;color:var(--mute);font-size:11px;font-weight:600;margin-bottom:1px}
+.tile span{font-size:13px;font-weight:600;line-height:1.35}
 </style>
 <script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
@@ -385,7 +391,7 @@ function eligBox(j){
   const qual=j.qualification||(jt(j)==='Internship'?'Currently studying / recent graduate — see listing':'Not stated in listing — usually B.E/B.Tech, MCA, B.Sc/BCA or equivalent');
   const rows=[['🎓','Qualification',qual],['💼','Experience',expText(j)+(j.walkin?' · attend in person':'')],['🛠','Key skills',j.skills.slice(0,6).join(', ')||'See listing'],['🧾','Job type',jt(j)+' · '+j.mode+(jt(j)==='Freelance'||jt(j)==='Contract'?' · no PF/leave usually':'')]];
   if(j.eligibility)rows.push(['📌','Also',j.eligibility]);
-  return `<div class="elig"><h3><span>✅ Eligibility</span>${v?`<span class="vd ${v.c}">${esc(v.t)}</span>`:''}</h3><ul>${rows.map(r=>`<li><span>${r[0]}</span><b>${r[1]}</b><span>${esc(r[2])}</span></li>`).join('')}</ul></div>`}
+  return `<div class="elig"><h3><span>✅ Eligibility</span>${v?`<span class="vd ${v.c}">${esc(v.t)}</span>`:''}</h3><div class="tiles">${rows.map(r=>`<div class="tile${String(r[2]).length>48?' wide':''}"><small>${r[0]} ${esc(r[1])}</small><span>${esc(r[2])}</span></div>`).join('')}</div></div>`}
 function card(r){
   const j=r.j,t=r.t,m=r.m,hitSet=new Set(m?m.hits.filter(h=>h&&h!=='(title)'):[]);
   const apply=safeUrl(j.apply),src=safeUrl(j.source),f=flags(j);
