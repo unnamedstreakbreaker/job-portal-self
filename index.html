@@ -132,6 +132,21 @@ details summary{color:var(--teal)}
 .promo button{-webkit-appearance:none;appearance:none;border:0;background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;font:600 13px Inter,sans-serif;padding:9px 14px;border-radius:11px;cursor:pointer;white-space:nowrap;touch-action:manipulation}
 .totop{background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;border:0}
 footer{padding-top:4px}
+
+.elig{margin:10px 0 4px;border:1px solid color-mix(in srgb,var(--teal) 35%,var(--line));background:color-mix(in srgb,var(--teal) 7%,var(--card));border-radius:12px;padding:10px 12px}
+.elig h3{margin:0 0 6px;font-size:13px;color:var(--softink);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.elig ul{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:13.5px}
+.elig li{display:grid;grid-template-columns:22px 92px minmax(0,1fr);overflow-wrap:anywhere;align-items:start}
+.elig li b{font-weight:600;color:var(--mute);font-size:12.5px;padding-top:1px}
+.vd{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.vd.ok{background:color-mix(in srgb,#16a34a 15%,transparent);color:#15803d}.vd.no{background:color-mix(in srgb,#dc2626 13%,transparent);color:#b91c1c}.vd.mb{background:color-mix(in srgb,#d97706 15%,transparent);color:#b45309}
+html[data-theme="dark"] .vd.ok{color:#4ade80}html[data-theme="dark"] .vd.no{color:#f87171}html[data-theme="dark"] .vd.mb{color:#fbbf24}
+.me{border:1px dashed color-mix(in srgb,var(--purple) 45%,var(--line));border-radius:14px;padding:10px 12px;display:grid;gap:8px;background:color-mix(in srgb,var(--purple) 5%,var(--card))}
+.me .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.me input{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;min-height:42px}
+.me h4{margin:0;font-size:13.5px;color:var(--purple)}
+.me .hint{font-size:12px;color:var(--mute)}
+.list{grid-template-columns:minmax(0,1fr)}.job,.promo{min-width:0;overflow-wrap:anywhere}
 </style>
 <script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
@@ -148,6 +163,13 @@ footer{padding-top:4px}
       <div class="stats" id="stats"></div>
       <div class="controls">
         <input type="search" id="q" placeholder="Search post, organisation, qualification, city…">
+        <div class="me">
+          <h4>🎯 Check my eligibility</h4>
+          <div class="row"><div><div class="lbl">Your age</div><input type="number" id="myAge" min="14" max="70" inputmode="numeric" placeholder="e.g. 26"></div><div><div class="lbl">Experience (yrs)</div><input type="number" id="myExp" min="0" max="40" inputmode="numeric" placeholder="e.g. 2"></div></div>
+          <div class="lbl">Highest qualification</div><div class="chips" id="qualChips"></div>
+          <div class="chips" id="eligChips"></div>
+          <div class="hint">Matched from each notification's text — always confirm category relaxations and subject rules in the official notification.</div>
+        </div>
         <div class="chips" id="regionChips"></div>
         <div class="chips" id="statusChips"></div>
       </div>
@@ -176,7 +198,7 @@ footer{padding-top:4px}
 
 <script>
 const TODAY = (()=>{const d=new Date();d.setHours(0,0,0,0);return d})();
-const state={q:'',cat:'All',sector:'All',region:'All',status:'Open',tab:'govt',stack:'',exp:'Any',city:'All',kind:'All',posted:'Any time'};
+const state={q:'',age:'',myexp:'',qual:'Not set',eligOnly:'All jobs',cat:'All',sector:'All',region:'All',status:'Open',tab:'govt',stack:'',exp:'Any',city:'All',kind:'All',posted:'Any time'};
 let JOBS=[],IT=[],IT_META={};
 
 function parse(s){if(!s)return null;const d=new Date(s+'T00:00:00');return isNaN(d)?null:d}
@@ -305,11 +327,38 @@ function badge(j){
   return`<div class="badge ${cls}">${txt}</div>`;
 }
 
+/* ---------- eligibility ---------- */
+const QL=['Not set','10th','12th / Inter','ITI / Diploma','Degree','B.Tech / BE','PG'];
+function jobQual(j){const t=(j.qualification||'').toLowerCase();if(!t||/as per notification|see notification/.test(t)&&!/degree|graduate|12th|10th|iti|diploma|b\.?tech|master/.test(t))return null;
+  if(/graduation not required|no degree/.test(t))return 0;
+  const lv=[];
+  if(/\b10th\b|\bssc\b|matric/.test(t))lv.push(1);
+  if(/12th|inter\b|intermediate|10\+2|hsc|\binter\s/.test(t))lv.push(2);
+  if(/\biti\b|diploma/.test(t))lv.push(3);
+  if(/any degree|any graduate|any full-time graduate|completed degree|bachelor|graduate|degree|b\.?sc|b\.?com|b\.?pharm|\bba\b|15 yrs education|d\.el\.ed|b\.ed|science|management|commerce|statistics|textile/.test(t))lv.push(4);
+  if(/\bbe\b|b\.?tech|engg|engineering|amie/.test(t))lv.push(5);
+  if(/master|\bpg\b|m\.?sc|m\.?pharm|mba|\bnet\b|ph\.?d|llb/.test(t))lv.push(6);
+  return lv.length?Math.min(...lv):null}
+function jobAge(j){const m=String(j.age||'').match(/(\d{2})\s*[–\-to]+\s*(\d{2})\s*y/);return m?[+m[1],+m[2]]:null}
+function jobExp(j){const t=String(j.experience||'').toLowerCase();if(!t)return null;if(/freshers only/.test(t))return[0,0];if(/no freshers/.test(t)){const m=t.match(/(\d+)/);return[m?+m[1]:1,99]}
+  if(/fresher/.test(t)){const m=t.match(/(\d+)\s*(?:–|-|to)\s*(\d+)/)||t.match(/to\s*(\d+)/);return[0,m?+(m[2]||m[1]):99]}
+  const m=t.match(/(\d+)\s*(?:–|-|to)\s*(\d+)\s*y/);if(m)return[+m[1],+m[2]];const n=t.match(/(\d+)\s*(?:\+|years|yrs)/);return n?[+n[1],99]:null}
+function verdict(j){
+  const ua=state.age===''?null:+state.age,ue=state.myexp===''?null:+state.myexp,uq=QL.indexOf(state.qual);
+  if(ua==null&&ue==null&&uq<1)return null;
+  const why=[];let bad=false,unk=false;
+  if(ua!=null){const a=jobAge(j);if(a){if(ua<a[0]||ua>a[1]){bad=true;why.push(`age ${a[0]}–${a[1]} (relaxation may apply)`)}}else if(j.sector==='Govt')unk=true}
+  if(uq>0){const q=jobQual(j);if(q==null)unk=true;else if(uq<q){bad=true;why.push(`needs ${QL[q]}`)}}
+  if(ue!=null){const e=jobExp(j);if(e){if(ue<e[0]){bad=true;why.push(`needs ${e[0]}+ yrs`)}else if(ue>e[1]+1){bad=true;why.push(e[1]===0?'freshers only':`up to ${e[1]} yrs`)}}}
+  return bad?{c:'no',t:'Not eligible',why}:unk?{c:'mb',t:'Check notification',why}:{c:'ok',t:'Likely eligible',why}}
+function eligBox(j,v){
+  const rows=[['🎓','Qualification',j.qualification],['🎂','Age limit',j.age],['💼','Experience',j.experience],['💳','Fee',j.fee]].filter(r=>r[2]&&r[2]!=='—');
+  if(!rows.length)return'';
+  return `<div class="elig"><h3><span>✅ Eligibility</span>${v?`<span class="vd ${v.c}" title="${esc(v.why.join(', '))}">${v.c==='ok'?'✓ ':v.c==='no'?'✕ ':'? '}${v.t}</span>`:''}</h3><ul>${rows.map(r=>`<li><span>${r[0]}</span><b>${r[1]}</b><span>${esc(r[2])}</span></li>`).join('')}${v&&v.why.length?`<li><span>ℹ️</span><b>Why</b><span>${esc(v.why.join(' · '))}</span></li>`:''}</ul></div>`}
 function card(j){
   const st=status(j);
   const rows=[
-    ['Posts',j.posts],['Roles',j.roles],['Qualification',j.qualification],
-    ['Experience',j.experience],['Age limit',j.age],['Fee',j.fee],['Salary',j.salary],
+    ['Posts',j.posts],['Roles',j.roles],['Salary',j.salary],
     ['Selection',j.selection],['How to apply',j.apply],['Where',j.location]
   ].filter(r=>r[1]&&r[1]!=='—');
   const main=rows.slice(0,4),more=rows.slice(4);
@@ -323,6 +372,7 @@ function card(j){
       <div class="d"><small>Last date</small><span>${fmt(j.end)}</span></div>
       <div class="d"><small>Where</small><span>${esc((j.location||'').split('·')[0])}</span></div>
     </div>
+    ${eligBox(j,verdict(j))}
     <dl>${main.map(dlRow).join('')}</dl>
     ${more.length?`<details><summary>More details ▾</summary><dl>${more.map(dlRow).join('')}</dl></details>`:''}
     ${j.note?`<div class="note">⚠ ${esc(j.note)}</div>`:''}
@@ -346,6 +396,9 @@ function render(){
 function renderGovt(){
   chips(document.getElementById('regionChips'),'region',['All','Andhra Pradesh','Telangana','All India']);
   chips(document.getElementById('statusChips'),'status',['Open','Closing soon','Upcoming','Closed','Any status']);
+  chips(document.getElementById('qualChips'),'qual',QL);
+  const anyMe=state.age!==''||state.myexp!==''||state.qual!=='Not set';
+  document.getElementById('eligChips').innerHTML=anyMe?['All jobs','Only eligible','Eligible + check'].map(o=>`<button type="button" class="chip${state.eligOnly===o?' on':''}" data-k="eligOnly" data-v="${o}">${o==='All jobs'?'Show all':o==='Only eligible'?'✓ Only likely eligible':'✓ Eligible + needs check'}</button>`).join(''):'';
   const q=state.q.trim().toLowerCase();
   const list=JOBS.filter(j=>{
     if(state.cat!=='All'&&j.sector!==state.cat)return false;
@@ -354,6 +407,7 @@ function renderGovt(){
     if(state.status==='Open'&&!(st==='Open'||st==='Closing soon'))return false;
     if(state.status!=='Open'&&state.status!=='Any status'&&st!==state.status)return false;
     if(q&&!Object.values(j).join(' ').toLowerCase().includes(q))return false;
+    if(anyMe&&state.eligOnly!=='All jobs'){const v=verdict(j);if(v&&(v.c==='no'||(state.eligOnly==='Only eligible'&&v.c==='mb')))return false}
     return true;
   }).sort((a,b)=>{
     const ra={'Closing soon':0,'Open':1,'Upcoming':2,'Closed':3};
@@ -368,6 +422,7 @@ function renderGovt(){
 
 load();
 document.getElementById('q').value=state.q||'';
+[['myAge','age'],['myExp','myexp']].forEach(([id,k])=>{const el=document.getElementById(id);el.value=state[k]||'';el.addEventListener('input',()=>{state[k]=el.value.trim();save();render()})});
 document.getElementById('q').addEventListener('input',e=>{state.q=e.target.value;save();render()});
 const stIn=document.getElementById('stack');
 function addStack(v){v=String(v||'').trim();if(!v)return;const t=stackTerms();if(t.some(x=>canon(x)===canon(v)))return;t.push(v.slice(0,40));state.stack=t.join(', ')}

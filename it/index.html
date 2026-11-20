@@ -149,6 +149,16 @@ header .reset{border-color:#fff;color:#fff}
 .sc.m{background:color-mix(in srgb,var(--purple) 14%,transparent);color:var(--purple)}
 .totop{background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;border:0}
 .res a{border-radius:12px}
+
+.elig{margin-top:9px;border:1px solid color-mix(in srgb,var(--teal) 35%,var(--line));background:color-mix(in srgb,var(--teal) 7%,var(--card));border-radius:12px;padding:9px 11px}
+.elig h3{margin:0 0 6px;font-size:13px;color:var(--softink);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.elig ul{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:13px}
+.elig li{display:grid;grid-template-columns:22px 92px minmax(0,1fr);overflow-wrap:anywhere;align-items:start}
+.elig li b{font-weight:600;color:var(--mute);font-size:12.5px}
+.vd{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.vd.ok{background:color-mix(in srgb,#16a34a 15%,transparent);color:#15803d}.vd.no{background:color-mix(in srgb,#dc2626 13%,transparent);color:#b91c1c}.vd.mb{background:color-mix(in srgb,#d97706 15%,transparent);color:#b45309}
+html[data-theme="dark"] .vd.ok{color:#4ade80}html[data-theme="dark"] .vd.no{color:#f87171}html[data-theme="dark"] .vd.mb{color:#fbbf24}
+.list{grid-template-columns:minmax(0,1fr)}.job,.promo{min-width:0;overflow-wrap:anywhere}
 </style>
 <script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
@@ -311,6 +321,12 @@ function renderSugg(){
   el.innerHTML=m.map(x=>`<button type="button" class="chip" data-stack="${esc(x)}">+ ${esc(x)}</button>`).join('')+(m.some(x=>canon(x)===q)?'':`<button type="button" class="chip" data-stack="${esc(document.getElementById('stackIn').value.trim())}">+ Add "${esc(document.getElementById('stackIn').value.trim())}"</button>`);
 }
 function chipRow(id,key,opts){document.getElementById(id).innerHTML=opts.map(o=>`<button type="button" class="chip${S[key]===o?' on':''}" data-k="${key}" data-v="${esc(o)}">${esc(o)}</button>`).join('')}
+function eligBox(j){
+  let v=null;if(S.exp!==''&&!isNaN(+S.exp)){const f=expFit(j,+S.exp);v=f.v>=1?{c:'ok',t:'✓ Eligible on experience'}:f.v>=.7?{c:'mb',t:'? Experience not stated'}:f.v>=.5?{c:'mb',t:'? '+f.t}:{c:'no',t:'✕ '+f.t}}
+  const qual=j.qualification||(jt(j)==='Internship'?'Currently studying / recent graduate — see listing':'Not stated in listing — usually B.E/B.Tech, MCA, B.Sc/BCA or equivalent');
+  const rows=[['🎓','Qualification',qual],['💼','Experience',expText(j)+(j.walkin?' · attend in person':'')],['🛠','Key skills',j.skills.slice(0,6).join(', ')||'See listing'],['🧾','Job type',jt(j)+' · '+j.mode+(jt(j)==='Freelance'||jt(j)==='Contract'?' · no PF/leave usually':'')]];
+  if(j.eligibility)rows.push(['📌','Also',j.eligibility]);
+  return `<div class="elig"><h3><span>✅ Eligibility</span>${v?`<span class="vd ${v.c}">${esc(v.t)}</span>`:''}</h3><ul>${rows.map(r=>`<li><span>${r[0]}</span><b>${r[1]}</b><span>${esc(r[2])}</span></li>`).join('')}</ul></div>`}
 function card(r){
   const j=r.j,t=r.t,m=r.m,hitSet=new Set(m?m.hits.filter(h=>h&&h!=='(title)'):[]);
   const apply=safeUrl(j.apply),src=safeUrl(j.source),f=flags(j);
@@ -321,6 +337,7 @@ function card(r){
    <div class="top"><div><h2>${esc(j.title)}</h2><div class="org">${esc(j.company)} · ${esc(j.kind)}</div><div class="badges"><span class="bd ${jt(j)}">${jt(j)}</span>${j.walkin?'<span class="bd walk">Walk-in</span>':''}<span class="bd">${esc(j.mode)}</span>${MARK.applied[j.id]?'<span class="bd" style="color:var(--ok)">✓ Applied</span>':''}</div></div>
     <div class="scores"><span class="sc ${tClass(t.score)}">${t.score}% genuine</span>${m?`<span class="sc m">${m.pct}% match</span>`:''}</div></div>
    <div class="meta"><span>📍 <b>${esc(j.city)}</b>${j.district&&j.district!==j.city?` (${esc(j.district)} dist.)`:''}${(j.alsoCities||[]).length?` + ${esc(j.alsoCities.join(', '))}`:''} · ${esc(j.mode)}</span><span>💼 <b>${expText(j)}</b></span><span>🕒 ${ago(j)}</span>${j.salary?`<span>💰 <b>${esc(j.salary)}</b></span>`:''}${j.applyBy?`<span>⏰ By <b>${fmt(j.applyBy)}</b></span>`:''}</div>
+   ${eligBox(j)}
    <div class="skills">${j.skills.map(s=>`<span class="sk${hitSet.has(s)?' hit':''}">${esc(s)}</span>`).join('')}</div>
    <div class="contact">${email}${phone}<div><span class="k">Official site:</span> ${apply?`<a href="${apply}" target="_blank" rel="noopener">${esc(new URL(apply).hostname)}</a>`:'Not linked in listing — search the company careers page'}</div></div>
    ${f.length?`<div class="flag">⚠ ${esc(f.join(' · '))}</div>`:''}
