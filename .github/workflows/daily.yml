@@ -1,4 +1,4 @@
-name: job-portal-self daily update + deploy
+name: job-portal-self daily update + publish
 
 on:
   schedule:
@@ -9,21 +9,18 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: publish
   cancel-in-progress: false
 
 jobs:
-  update-and-deploy:
+  update-and-publish:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -40,12 +37,12 @@ jobs:
         run: |
           git config user.name "jobs-bot"
           git config user.email "jobs-bot@users.noreply.github.com"
-          git add data/jobs.db site/jobs.json site/it_jobs.json || true
+          git add data/jobs.db site/jobs.json site/it_jobs.json site/it/jobs.json || true
           git diff --cached --quiet || git commit -m "Daily jobs update $(date +%F)"
           git push || true
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-      - id: deploy
-        uses: actions/deploy-pages@v4
+      - name: Publish site/ to the gh-pages branch (GitHub Pages)
+        run: |
+          git config user.name "jobs-bot"
+          git config user.email "jobs-bot@users.noreply.github.com"
+          git subtree split --prefix site -b gh-pages-tmp
+          git push -f origin gh-pages-tmp:gh-pages

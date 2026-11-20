@@ -2,7 +2,7 @@
 
 Self-hosted job portal: daily govt/private jobs (AP & Telangana focus) and an IT Jobs Finder.
 
-**Live site (GitHub Pages):** https://sivamani40.github.io/job-portal-self/ · IT Jobs Finder: https://sivamani40.github.io/job-portal-self/it/
+**Live site (GitHub Pages):** https://unnamedstreakbreaker.github.io/job-portal-self/ · IT Jobs Finder: https://unnamedstreakbreaker.github.io/job-portal-self/it/
 
 **Live pages:** `site/index.html` (Daily Jobs India — govt, private & IT) and `site/it/` (IT Jobs Finder — job types, places, AP districts, saved/applied tracker).
 
