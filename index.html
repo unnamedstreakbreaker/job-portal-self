@@ -25,11 +25,11 @@ h1{margin:0;font-size:20px;letter-spacing:-.01em}
 input[type=search]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
 .chips{display:flex;gap:6px;flex-wrap:wrap;position:relative;z-index:2}
 .chip{flex:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;-webkit-appearance:none;appearance:none;min-height:34px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;font:500 13px Inter,sans-serif;cursor:pointer}
-.chip.on{background:#e8efff;border-color:#a9c0f7;color:#1d4ed8;font-weight:600}
+.chip.on{background:var(--soft);border-color:var(--softline);color:var(--softink);font-weight:600}
 .tagbox{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:6px 8px;border:1px solid var(--line);border-radius:10px;background:var(--card);min-height:44px;cursor:text}
-.tagbox:focus-within{border-color:#a9c0f7;box-shadow:0 0 0 3px #e8efff}
-.tag{display:inline-flex;align-items:center;gap:4px;background:#e8efff;color:#1d4ed8;border:1px solid #a9c0f7;border-radius:8px;padding:3px 4px 3px 10px;font-size:13px;font-weight:600}
-.tag button{-webkit-appearance:none;appearance:none;border:0;background:#d3e0ff;color:#1d4ed8;width:22px;height:22px;border-radius:6px;font-size:14px;line-height:1;cursor:pointer;touch-action:manipulation}
+.tagbox:focus-within{border-color:var(--softline);box-shadow:0 0 0 3px var(--soft)}
+.tag{display:inline-flex;align-items:center;gap:4px;background:var(--soft);color:var(--softink);border:1px solid var(--softline);border-radius:8px;padding:3px 4px 3px 10px;font-size:13px;font-weight:600}
+.tag button{-webkit-appearance:none;appearance:none;border:0;background:var(--softbtn);color:var(--softink);width:22px;height:22px;border-radius:6px;font-size:14px;line-height:1;cursor:pointer;touch-action:manipulation}
 .tagbox input{flex:1;min-width:120px;border:0!important;padding:6px 2px;background:transparent;box-shadow:none;outline:none}
 main{padding:14px 16px 40px}
 .list{display:grid;gap:10px}
@@ -77,13 +77,21 @@ footer{color:var(--mute);font-size:12px;text-align:center;padding:10px 16px 30px
 .b-none{background:var(--bg);color:var(--mute)}
 .coverage{margin-top:14px;font-size:12.5px;color:var(--mute);background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:10px 12px}
 @media (max-width:520px){dl{grid-template-columns:92px 1fr}.dates{grid-template-columns:1fr 1fr}.dates .d:last-child{grid-column:span 2}}
+html[data-theme="dark"]{color-scheme:dark;--bg:#181b22;--card:#22262f;--ink:#e6e9ef;--mute:#a3aab6;--line:#343a46;--brand:#6f95f2;--ok:#4ade80;--mid:#fbbf24;--bad:#f87171;--blue:#7cabff;--govt:#4ade80;--pvt:#c4a5ff;--warn:#fb923c;--soon:#fbbf24;--up:#7cabff;--closed:#8b93a1;--soft:#2a3550;--softline:#4a5f93;--softink:#b9cdff;--softbtn:#3a4a70;--purple:#c4a5ff}
+html{--soft:#e8efff;--softline:#a9c0f7;--softink:#1d4ed8;--softbtn:#d3e0ff;--purple:#7c3aed}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.theme{-webkit-appearance:none;appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 12px;font:600 13px Inter,system-ui,sans-serif;cursor:pointer;touch-action:manipulation;min-height:36px;white-space:nowrap}
+.totop{position:fixed;right:14px;bottom:18px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;z-index:8;opacity:0;pointer-events:none;transition:opacity .2s;touch-action:manipulation}
+.totop.show{opacity:1;pointer-events:auto}
+a{color:var(--brand)}
 </style>
+<script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <h1>Daily Jobs India</h1>
-    <a href="it/" style="display:inline-block;margin:6px 0 4px;font-size:13px;font-weight:600;color:#1f4fd1">→ Open IT Jobs Finder (job types, saved &amp; applied tracker)</a>
+    <div class="topbar"><h1>Daily Jobs India</h1><button type="button" class="theme" id="themeBtn">☀️ Light</button></div>
+    <a href="it/" style="display:inline-block;margin:6px 0 4px;font-size:13px;font-weight:600;color:var(--brand)">→ Open IT Jobs Finder (job types, saved &amp; applied tracker)</a>
     <div class="tabs" id="tabs">
       <button type="button" class="tab" data-tab="govt">Govt & Walk-ins</button>
       <button type="button" class="tab" data-tab="it">IT Jobs</button>
@@ -329,6 +337,19 @@ fetch('jobs.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
   document.getElementById('sub').textContent=`Govt & private openings from the news · ${d.focus||''} · Updated ${fmt(d.updated)}`;
   render();
 }).catch(()=>{document.getElementById('list').innerHTML='<div class="empty">Could not load the job list.</div>'});
+</script>
+<button type="button" class="totop" id="totop" aria-label="Back to top">↑</button>
+<script>
+(function(){
+ var L={light:'☀️ Light',dark:'🌙 Dark',auto:'🌓 Auto'},N={light:'dark',dark:'auto',auto:'light'};
+ function get(){try{return localStorage.getItem('jp_theme')||'light'}catch(e){return 'light'}}
+ function apply(m){var t=m==='auto'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):m;document.documentElement.dataset.theme=t;var b=document.getElementById('themeBtn');if(b){b.textContent=L[m];b.title='Theme: '+m+' (tap to change)'}}
+ var b=document.getElementById('themeBtn');apply(get());
+ if(b)b.addEventListener('click',function(e){e.stopPropagation();var m=N[get()]||'light';try{localStorage.setItem('jp_theme',m)}catch(_){}apply(m)});
+ try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(get()==='auto')apply('auto')})}catch(_){}
+ var tt=document.getElementById('totop');addEventListener('scroll',function(){tt.classList.toggle('show',scrollY>600)},{passive:true});
+ tt.addEventListener('click',function(e){e.stopPropagation();scrollTo({top:0,behavior:'smooth'})});
+})();
 </script>
 </body>
 </html>
