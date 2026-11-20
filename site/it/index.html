@@ -110,6 +110,45 @@ html{--soft:#e8efff;--softline:#a9c0f7;--softink:#1d4ed8;--softbtn:#d3e0ff;--pur
 .totop{position:fixed;right:14px;bottom:18px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;box-shadow:0 4px 14px rgba(0,0,0,.18);cursor:pointer;z-index:8;opacity:0;pointer-events:none;transition:opacity .2s;touch-action:manipulation}
 .totop.show{opacity:1;pointer-events:auto}
 a{color:var(--brand)}
+
+/* ===== teal + purple redesign ===== */
+html{--teal:#0d9488;--purple:#7c3aed;--soft:#e6f7f5;--softline:#8fd6cd;--softink:#0f766e;--softbtn:#c9eee9;--shadow:0 1px 2px rgba(16,24,40,.06),0 4px 14px rgba(16,24,40,.06)}
+html[data-theme="dark"]{--teal:#2dd4bf;--purple:#a78bfa;--soft:#16393a;--softline:#2b6f69;--softink:#99f0e3;--softbtn:#1f4c4b;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25)}
+header{background:linear-gradient(135deg,#0f766e 0%,#0d9488 38%,#6d28d9 100%);border:0;border-radius:0 0 22px 22px;box-shadow:0 8px 24px rgba(109,40,217,.18);padding:20px 0 16px}
+html[data-theme="dark"] header{background:linear-gradient(135deg,#0b4f4a 0%,#115e59 40%,#4c1d95 100%)}
+header h1{color:#fff;font-size:22px}
+header .sub{color:rgba(255,255,255,.85)}
+header>.wrap>.lbl,header #distWrap .lbl{color:rgba(255,255,255,.85)}
+header .theme{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.35);color:#fff}
+header .views .chip{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff}
+header .views .chip.on{background:#fff;color:#4c1d95;border-color:#fff}
+html[data-theme="dark"] header .views .chip.on{background:var(--card);color:var(--ink)}
+header .types .chip{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff}
+header .types .chip.on{background:#fff;color:#0f766e;border-color:#fff}
+html[data-theme="dark"] header .types .chip.on{background:var(--card);color:var(--softink)}
+header .districts .chip{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff}
+header .districts .chip.on{background:#fff;color:#0f766e}
+.search input{border:0;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.place{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);color:#fff;border-radius:14px}
+.place small{color:rgba(255,255,255,.8)}
+.place.on{background:#fff;border-color:#fff;color:#4c1d95;box-shadow:0 6px 16px rgba(0,0,0,.18)}.place.on small{color:#0f766e}
+html[data-theme="dark"] .place.on{background:var(--card);color:var(--ink)}
+.box{background:var(--card);border-radius:18px;box-shadow:var(--shadow);margin-top:14px}
+header .stats .stat{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);color:rgba(255,255,255,.85)}
+header .stats .stat b{color:#fff}
+header .active .lbl{color:#fff}
+header .afl{background:rgba(255,255,255,.9);color:#4c1d95}
+header .reset{border-color:#fff;color:#fff}
+.chip.on{background:var(--soft);border-color:var(--softline);color:var(--softink)}
+.job{border-radius:16px;box-shadow:var(--shadow);border-left:5px solid var(--teal)}
+.job[data-t="Part-time"],.job[data-t="Freelance"]{border-left-color:var(--purple)}.job[data-t="Contract"]{border-left-color:#d97706}.job[data-t="Internship"]{border-left-color:#2563eb}
+.links a{border-radius:11px;padding:9px 14px}
+.links a.primary{background:linear-gradient(135deg,var(--teal),var(--purple));border:0;color:#fff;box-shadow:0 3px 10px color-mix(in srgb,var(--purple) 30%,transparent)}
+.why summary,details.more summary,.clearall{color:var(--teal)}
+.grp{color:var(--purple)}
+.sc.m{background:color-mix(in srgb,var(--purple) 14%,transparent);color:var(--purple)}
+.totop{background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;border:0}
+.res a{border-radius:12px}
 </style>
 <script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
@@ -278,7 +317,7 @@ function card(r){
   const email=j.hrEmail?`<div><span class="k">HR email:</span> <b>${esc(j.hrEmail)}</b>${FREE.test(j.hrEmail)?' ⚠️':''}</div>`:`<div><span class="k">HR email:</span> Not published — apply on the official site</div>`;
   const phone=j.hrPhone?`<div><span class="k">HR phone:</span> <b>${esc(j.hrPhone)}</b></div>`:'';
   const sv=!!MARK.saved[j.id],ap=!!MARK.applied[j.id];
-  return `<article class="job${ap?' applied':''}">
+  return `<article class="job${ap?' applied':''}" data-t="${jt(j)}">
    <div class="top"><div><h2>${esc(j.title)}</h2><div class="org">${esc(j.company)} · ${esc(j.kind)}</div><div class="badges"><span class="bd ${jt(j)}">${jt(j)}</span>${j.walkin?'<span class="bd walk">Walk-in</span>':''}<span class="bd">${esc(j.mode)}</span>${MARK.applied[j.id]?'<span class="bd" style="color:var(--ok)">✓ Applied</span>':''}</div></div>
     <div class="scores"><span class="sc ${tClass(t.score)}">${t.score}% genuine</span>${m?`<span class="sc m">${m.pct}% match</span>`:''}</div></div>
    <div class="meta"><span>📍 <b>${esc(j.city)}</b>${j.district&&j.district!==j.city?` (${esc(j.district)} dist.)`:''}${(j.alsoCities||[]).length?` + ${esc(j.alsoCities.join(', '))}`:''} · ${esc(j.mode)}</span><span>💼 <b>${expText(j)}</b></span><span>🕒 ${ago(j)}</span>${j.salary?`<span>💰 <b>${esc(j.salary)}</b></span>`:''}${j.applyBy?`<span>⏰ By <b>${fmt(j.applyBy)}</b></span>`:''}</div>
