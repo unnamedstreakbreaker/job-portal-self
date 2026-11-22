@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-22",
  "places": [
   "Telangana",
   "Andhra Pradesh",
@@ -47,7 +47,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "ms-cloud-infra",
@@ -85,7 +87,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "google-ai-platform",
@@ -120,7 +124,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "amzn-sde3-cs",
@@ -155,7 +161,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "amzn-sde2-fintech",
@@ -187,7 +195,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "amzn-sde-business",
@@ -219,7 +229,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "jpmc-se2-corp",
@@ -251,7 +263,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "snow-se-nov16",
@@ -287,7 +301,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "snow-ai-app-se",
@@ -320,7 +336,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "snow-crm-sse",
@@ -353,7 +371,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "wipro-ai-lead",
@@ -384,7 +404,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "wipro-dev-l4",
@@ -414,7 +436,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "wipro-devops-terraform",
@@ -448,7 +472,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "acn-python",
@@ -478,7 +504,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "dlt-tech-controls",
@@ -512,7 +540,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "dlt-python-genai",
@@ -544,7 +574,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "dlt-frontend",
@@ -576,7 +608,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "qcom-hw-2027",
@@ -614,7 +648,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "qcom-rf-sw",
@@ -649,71 +685,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
-  },
-  {
-   "id": "tcs-hris-oracle",
-   "company": "TCS",
-   "kind": "IT Services",
-   "title": "HRIS Oracle Fusion Benefits SME – walk-in 21 Nov",
-   "city": "Hyderabad",
-   "mode": "On-site",
-   "expMin": 4,
-   "expMax": 8,
-   "skills": [
-    "Oracle Fusion",
-    "Oracle HCM",
-    "Workday",
-    "SAP"
-   ],
-   "posted": "2026-11-19",
-   "applyBy": "2026-11-21",
-   "apply": "https://www.tcs.com/careers",
-   "source": "https://beincareer.com/tcs-walk-in-drive-hyderabad-hris-oracle-fusion-benefits-21-nov-2026/",
-   "note": "Walk-in 10 AM–12:30 PM at TCS Deccan Park, Madhapur. TCS EP number mandatory.",
-   "state": "Telangana",
-   "established": true,
-   "official": true,
-   "corroborated": true,
-   "hrEmail": "",
-   "hrPhone": "",
-   "redFlags": [],
-   "salary": "",
-   "district": "",
-   "alsoCities": [],
-   "type": "Full-time",
-   "walkin": true
-  },
-  {
-   "id": "infy-bpm-product-support",
-   "company": "Infosys BPM",
-   "kind": "IT Services",
-   "title": "Technical Process Specialist – Product Support (walk-in 21 Nov)",
-   "city": "Hyderabad",
-   "mode": "On-site",
-   "expMin": 1,
-   "expMax": 4,
-   "skills": [
-    "Technical Support",
-    "Customer Support"
-   ],
-   "posted": "2026-11-19",
-   "applyBy": "2026-11-21",
-   "apply": "https://www.infosysbpm.com/careers",
-   "source": "https://beincareer.com/infosys-bpm-walk-in-drive-hyderabad-product-support-21-nov-2026/",
-   "note": "Walk-in 10 AM–1 PM, Infosys STP Manikonda. Needs Candidate ID + SHL test.",
-   "state": "Telangana",
-   "established": true,
-   "official": true,
-   "corroborated": true,
-   "hrEmail": "",
-   "hrPhone": "",
-   "redFlags": [],
-   "salary": "",
-   "district": "",
-   "alsoCities": [],
-   "type": "Full-time",
-   "walkin": true
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "kavia-remote",
@@ -745,7 +719,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "workato-remote",
@@ -776,7 +752,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "sophos-remote",
@@ -807,7 +785,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "sfdc-proactive-mon",
@@ -841,7 +821,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "sfdc-smts-devops",
@@ -874,41 +856,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
-  },
-  {
-   "id": "capg-playwright-hyd",
-   "company": "Capgemini",
-   "kind": "IT Services",
-   "title": "Playwright Test Automation – Face-to-Face Drive (21 Nov)",
-   "city": "Hyderabad",
-   "state": "Telangana",
-   "mode": "On-site",
-   "expMin": null,
-   "expMax": null,
-   "skills": [
-    "Playwright",
-    "Test Automation",
-    "CI/CD",
-    "Jenkins",
-    "Azure DevOps"
-   ],
-   "posted": "2026-11-19",
-   "applyBy": "2026-11-21",
-   "apply": "https://www.capgemini.com/in-en/careers/",
-   "source": "https://careerforfreshers.com/?p=38612",
-   "established": true,
-   "official": false,
-   "corroborated": false,
-   "note": "Scheduled drive for experienced testers in Pune, Hyderabad & Bengaluru — register on Capgemini's careers site first; confirm the venue in your invite.",
-   "hrEmail": "",
-   "hrPhone": "",
-   "redFlags": [],
-   "salary": "",
-   "district": "",
-   "alsoCities": [],
-   "type": "Full-time",
-   "walkin": true
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "postman-iam",
@@ -940,7 +890,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "edgevega-intern",
@@ -974,7 +926,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Internship",
-   "walkin": true
+   "walkin": true,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "google-aiml-discover",
@@ -1005,41 +959,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
-  },
-  {
-   "id": "capg-playwright-blr",
-   "company": "Capgemini",
-   "kind": "IT Services",
-   "title": "Playwright Test Automation – Face-to-Face Drive (21 Nov)",
-   "city": "Bengaluru",
-   "state": "Karnataka",
-   "mode": "On-site",
-   "expMin": null,
-   "expMax": null,
-   "skills": [
-    "Playwright",
-    "Test Automation",
-    "CI/CD",
-    "Jenkins",
-    "Azure DevOps"
-   ],
-   "posted": "2026-11-19",
-   "applyBy": "2026-11-21",
-   "apply": "https://www.capgemini.com/in-en/careers/",
-   "source": "https://careerforfreshers.com/?p=38612",
-   "established": true,
-   "official": false,
-   "corroborated": false,
-   "note": "Register on Capgemini's careers site first; confirm the venue in your invite.",
-   "hrEmail": "",
-   "hrPhone": "",
-   "redFlags": [],
-   "salary": "",
-   "district": "",
-   "alsoCities": [],
-   "type": "Full-time",
-   "walkin": true
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "kickdrum-sse",
@@ -1072,7 +994,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "jazzx-sse",
@@ -1105,7 +1029,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "mp-ai-saas-dev",
@@ -1139,7 +1065,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "qudragen-sfdc",
@@ -1171,7 +1099,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": true
+   "walkin": true,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "headout-sre",
@@ -1204,7 +1134,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "cashfree-ai-sde1",
@@ -1236,7 +1168,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "freshworks-staff-test",
@@ -1268,7 +1202,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "freshworks-sse-fs",
@@ -1301,7 +1237,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "expleo-fs",
@@ -1333,7 +1271,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "sprinto-fs-remote",
@@ -1365,7 +1305,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "id": "habyt-ai-remote",
@@ -1396,7 +1338,9 @@
    "district": "",
    "alsoCities": [],
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1430,7 +1374,9 @@
    ],
    "source": "https://usemimi.com/jobs/senior-software-developer-and-software-development-engineer-in-test-sdet-at-sails-software-solutions-mnl6bhme",
    "type": "Full-time",
-   "walkin": true
+   "walkin": true,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1465,7 +1411,9 @@
    ],
    "source": "https://usemimi.com/jobs/senior-software-developer-and-software-development-engineer-in-test-sdet-at-sails-software-solutions-mnl6bhme",
    "type": "Full-time",
-   "walkin": true
+   "walkin": true,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1500,7 +1448,9 @@
    ],
    "source": "https://usemimi.com/jobs/senior-software-developer-and-software-development-engineer-in-test-sdet-at-sails-software-solutions-mnl6bhme",
    "type": "Full-time",
-   "walkin": true
+   "walkin": true,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1534,7 +1484,9 @@
    ],
    "source": "https://usemimi.com/jobs/senior-software-developer-and-software-development-engineer-in-test-sdet-at-sails-software-solutions-mnl6bhme",
    "type": "Full-time",
-   "walkin": true
+   "walkin": true,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1572,7 +1524,9 @@
    ],
    "source": "https://usemimi.com/jobs/senior-software-developer-and-software-development-engineer-in-test-sdet-at-sails-software-solutions-mnl6bhme",
    "type": "Full-time",
-   "walkin": true
+   "walkin": true,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1609,7 +1563,9 @@
    ],
    "source": "https://fluentgrid.com/?p=47581",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1642,7 +1598,9 @@
    ],
    "source": "https://in.jooble.org/jobs-developer/Visakhapatnam",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1677,7 +1635,9 @@
    ],
    "source": "https://in.jooble.org/jobs-it-software-developer/Visakhapatnam",
    "type": "Contract",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1710,7 +1670,9 @@
    ],
    "source": "https://www.foundit.in/job/google-agent-development-vizag-location-only-adk-exp-is-req-tata-consultancy-services-india-42644324",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1741,7 +1703,9 @@
    ],
    "source": "https://in.jobsora.com/jobs-mean-stack-developer-visakhapatnam",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1771,7 +1735,9 @@
    ],
    "source": "https://in.jooble.org/jobs-software-python/Visakhapatnam",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1801,7 +1767,9 @@
    ],
    "source": "https://thejobcompany.co.in/frontend/job_details.php?job_id=6582",
    "type": "Internship",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1833,7 +1801,9 @@
    ],
    "source": "https://offcampusjobs4u.com/hcltech-off-campus-drive-2026-service-desk-analyst/",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1864,7 +1834,9 @@
    ],
    "source": "https://in.jobsora.com/jobs-software-engineer-guntur-district",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1896,7 +1868,9 @@
    ],
    "source": "https://in.jooble.org/jobs-software-startup/Guntur",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1927,7 +1901,9 @@
    ],
    "source": "https://in.jobsora.com/jobs-software-developer-kakinada",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1958,7 +1934,9 @@
    ],
    "source": "https://en-in.whatjobs.com/jobs/programmers/tirupati-andhra-pradesh",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -1994,7 +1972,9 @@
    ],
    "source": "https://beincareer.com/?p=9639",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -2027,7 +2007,9 @@
    ],
    "source": "https://jobs.anitab.org/companies/walmart/jobs/100048427-ind-senior-software-engineer",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -2064,7 +2046,9 @@
    ],
    "source": "https://www.amazon.jobs/en/jobs/10406482/software-dev-engineer-i",
    "type": "Full-time",
-   "walkin": false
+   "walkin": false,
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -2100,7 +2084,9 @@
     "JavaScript",
     "LLM"
    ],
-   "source": "https://job-boards.greenhouse.io/outlier/jobs/4558931005"
+   "source": "https://job-boards.greenhouse.io/outlier/jobs/4558931005",
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -2134,7 +2120,9 @@
     "Agentic AI",
     "LLM"
    ],
-   "source": "https://work.turing.com/r/8ZxbHe4qSQ"
+   "source": "https://work.turing.com/r/8ZxbHe4qSQ",
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -2166,7 +2154,9 @@
     "AWS",
     "Data Engineering"
    ],
-   "source": "https://jobs.lever.co/smart-working-solutions/fb185e29-f934-4839-b967-b00fbfa1b9b5/apply"
+   "source": "https://jobs.lever.co/smart-working-solutions/fb185e29-f934-4839-b967-b00fbfa1b9b5/apply",
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -2200,7 +2190,9 @@
     "JavaScript",
     "Web Applications"
    ],
-   "source": "https://jobs.lever.co/jobgether/038108dd-a4bb-45dc-8d04-1e64c8d701d6"
+   "source": "https://jobs.lever.co/jobgether/038108dd-a4bb-45dc-8d04-1e64c8d701d6",
+   "qualification": "",
+   "eligibility": ""
   },
   {
    "hrEmail": "",
@@ -2235,7 +2227,519 @@
     "Full Stack",
     "Spring Boot"
    ],
-   "source": "https://www.foundit.in/job/java-developer-people-prime-worldwide-hyderabad-secunderabad-telangana-48070214"
+   "source": "https://www.foundit.in/job/java-developer-people-prime-worldwide-hyderabad-secunderabad-telangana-48070214",
+   "qualification": "",
+   "eligibility": ""
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Karnataka",
+   "district": "",
+   "alsoCities": [],
+   "mode": "On-site",
+   "expMin": 5,
+   "expMax": null,
+   "skills": [
+    "C++",
+    "C",
+    "Performance tuning",
+    "Distributed systems",
+    "Inference"
+   ],
+   "qualification": "Bachelor's degree or equivalent practical experience",
+   "eligibility": "",
+   "posted": "2026-11-17",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://www.google.com/about/careers/applications/jobs/results/134407434880852678-senior-software-engineer-ai-foundry-core-bulk-inference",
+   "source": "https://jobs.anitab.org/companies/google-2-6e248a84-5b9b-4601-aff7-7c2e9e285b9c/jobs/100063855-senior-software-engineer-ai-foundry-core-bulk-inference",
+   "established": true,
+   "official": true,
+   "corroborated": true,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "",
+   "id": "google-ai-foundry-bulk-inf",
+   "company": "Google",
+   "title": "Senior Software Engineer, AI Foundry, Core Bulk Inference",
+   "city": "Bengaluru"
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Telangana",
+   "district": "",
+   "alsoCities": [],
+   "mode": "On-site",
+   "expMin": 0,
+   "expMax": 1,
+   "skills": [
+    "SAP ABAP",
+    "SD",
+    "HANA",
+    "Open SQL"
+   ],
+   "qualification": "Bachelors or better",
+   "eligibility": "",
+   "posted": "2026-11-19",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://builtin.com/job/associate-software-engineer/11419037",
+   "source": "Built In",
+   "established": true,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "Entry level; Vistex says it trains selected candidates. Apply via Built In (login needed).",
+   "id": "vistex-ase-abap",
+   "company": "Vistex",
+   "title": "Associate Software Engineer (SAP ABAP, training provided)",
+   "city": "Hyderabad"
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Telangana",
+   "district": "",
+   "alsoCities": [],
+   "mode": "On-site",
+   "expMin": 8,
+   "expMax": null,
+   "skills": [
+    "C#",
+    ".NET Core",
+    "ASP.NET Core",
+    "SQL Server",
+    "Azure",
+    "Azure DevOps"
+   ],
+   "qualification": "Bachelor's degree in Computer Science, Engineering, Information Technology, or equivalent practical experience",
+   "eligibility": "",
+   "posted": "2026-11-13",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://builtin.com/job/senior-software-engineer-i/11336370",
+   "source": "Built In",
+   "established": true,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "Req 2379416 — can also be searched on careers.unitedhealthgroup.com.",
+   "id": "optum-sse1-dotnet",
+   "company": "Optum (UnitedHealth Group)",
+   "title": "Senior Software Engineer I – C#/.NET (req 2379416)",
+   "city": "Hyderabad"
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Telangana",
+   "district": "",
+   "alsoCities": [],
+   "mode": "Hybrid",
+   "expMin": 5,
+   "expMax": null,
+   "skills": [
+    "SDLC",
+    "CI/CD",
+    "Cloud-native",
+    "AI-assisted development",
+    "Agile"
+   ],
+   "qualification": "Formal training or certification on software engineering concepts and 5+ years applied experience",
+   "eligibility": "",
+   "posted": "2026-11-16",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://builtin.com/job/lead-software-engineer/11334272",
+   "source": "Built In",
+   "established": true,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "Also findable on jpmc.fa.oraclecloud.com careers.",
+   "id": "jpmc-lead-se-hyd-nov",
+   "company": "JPMorgan Chase",
+   "title": "Lead Software Engineer (AI-assisted development)",
+   "city": "Hyderabad"
+  },
+  {
+   "kind": "Startup / SME",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Andhra Pradesh",
+   "district": "Visakhapatnam",
+   "alsoCities": [],
+   "mode": "On-site",
+   "expMin": 0,
+   "expMax": 0,
+   "skills": [
+    "OOP",
+    "Java/Python/C#/C++/JavaScript",
+    "DSA basics",
+    "Debugging"
+   ],
+   "qualification": "B.E / B.Tech / BCA / MCA / MSc IT in Computer Science, IT, or a related field",
+   "eligibility": "Freshers",
+   "posted": "2026-11-11",
+   "applyBy": "2026-11-28",
+   "salary": "₹15,000–21,000/month",
+   "apply": "https://callabri.com/jobs/software-developer-trainee-fresher-visakhapatnam-andhra-pradesh",
+   "source": "https://beincareer.com/walk-in-interviews-hyderabad-vizag-november-2026/",
+   "established": false,
+   "official": false,
+   "corroborated": true,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [
+    "employer not named"
+   ],
+   "note": "Recruiter listing; actual employer not disclosed — confirm before joining, never pay fees.",
+   "id": "callabri-vizag-trainee",
+   "company": "Callabri (client employer not named)",
+   "title": "Software Developer Trainee (Fresher)",
+   "city": "Visakhapatnam"
+  },
+  {
+   "kind": "Startup / SME",
+   "type": "Full-time",
+   "walkin": true,
+   "state": "Tamil Nadu",
+   "district": "",
+   "alsoCities": [],
+   "mode": "On-site",
+   "expMin": 0,
+   "expMax": 0,
+   "skills": [
+    "Programming fundamentals"
+   ],
+   "qualification": "B.E/B.Tech, M.E/M.Tech, MCA, BCA, or B.Sc Computer Science",
+   "eligibility": "2024, 2025 and 2026 graduates; listing says male candidates only",
+   "posted": "2026-11-19",
+   "applyBy": "2026-11-22",
+   "salary": "₹3–4 LPA",
+   "apply": "https://www.naukri.com/job-listings-software-engineer-trainee-walk-in-male-candidate-only-soft-suave-chennai-0-to-0-years-070126015200",
+   "source": "https://offcampusjobs4u.com/soft-suave-walk-in-drive-2026-software-engineer-trainee-chennai-3/",
+   "established": false,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "Venue: 5th Floor, Gamma Block, SSPDL Alpha City, Rajiv Gandhi Salai, Navalur, Chennai. Repeat drive.",
+   "id": "softsuave-chennai-walkin-22nov",
+   "company": "Soft Suave Technologies",
+   "title": "Software Engineer Trainee – Walk-in 22 Nov (9–11 AM)",
+   "city": "Chennai"
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Telangana",
+   "district": "",
+   "alsoCities": [],
+   "mode": "Hybrid",
+   "expMin": null,
+   "expMax": null,
+   "skills": [
+    "Java",
+    "TypeScript",
+    "Selenium",
+    "API Testing",
+    "Azure DevOps",
+    "Jenkins",
+    "Docker",
+    "Azure"
+   ],
+   "qualification": "",
+   "eligibility": "",
+   "posted": "2026-11-19",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://builtin.com/job/software-dev-engineer-test-ii/12315726",
+   "source": "Built In",
+   "established": true,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "Listed as entry/junior level; years not stated. Also searchable on MetLife careers.",
+   "id": "metlife-sdet2-hyd",
+   "company": "MetLife",
+   "title": "Software Dev Engineer in Test II",
+   "city": "Hyderabad"
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Telangana",
+   "district": "",
+   "alsoCities": [],
+   "mode": "Hybrid",
+   "expMin": 3,
+   "expMax": null,
+   "skills": [
+    "Java",
+    "Spring Boot",
+    "React",
+    "AWS",
+    "PostgreSQL",
+    "CI/CD"
+   ],
+   "qualification": "Formal training or certification on software engineering concepts and 3+ years applied experience",
+   "eligibility": "",
+   "posted": "2026-11-19",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://builtin.com/job/software-engineer-iii-java-fullstack-aws/12269050",
+   "source": "Built In",
+   "established": true,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "Also findable on jpmc.fa.oraclecloud.com careers.",
+   "id": "jpmc-se3-javafs-aws-hyd",
+   "company": "JPMorgan Chase",
+   "title": "Software Engineer III – Java Fullstack, AWS",
+   "city": "Hyderabad"
+  },
+  {
+   "kind": "Startup / SME",
+   "type": "Internship",
+   "walkin": false,
+   "state": "Karnataka",
+   "district": "",
+   "alsoCities": [],
+   "mode": "On-site",
+   "expMin": 0,
+   "expMax": 0,
+   "skills": [
+    "DSA",
+    "Node.js/Python/Ruby on Rails",
+    "SQL"
+   ],
+   "qualification": "",
+   "eligibility": "Must be available full-time for 6 months from 5 Jan 2027, on-site in Bengaluru",
+   "posted": "2026-10-12",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://job-boards.greenhouse.io/hackerrank/jobs/8229735",
+   "source": "https://yohire.in/job/hackerrank-sde-intern-jan-india-internship-2026",
+   "established": true,
+   "official": true,
+   "corroborated": true,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "Stipend not published. First round reportedly an AI voice screen from hackerrankforwork.com.",
+   "id": "hackerrank-sde-intern-2027",
+   "company": "HackerRank",
+   "title": "Software Development Engineer Intern (6 months, Jan–Jun 2027)",
+   "city": "Bengaluru"
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Internship",
+   "walkin": false,
+   "state": "Telangana",
+   "district": "",
+   "alsoCities": [],
+   "mode": "On-site",
+   "expMin": 0,
+   "expMax": 0,
+   "skills": [
+    "Python",
+    "React",
+    "Node.js",
+    "Copilot Studio",
+    "NLP",
+    "Low-code"
+   ],
+   "qualification": "Pursuing B.Tech in AI/ML (mandatory)",
+   "eligibility": "Hands-on Python plus React or Node.js; experience building AI agents (Copilot Studio or similar)",
+   "posted": "2026-11-20",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://careers.dieboldnixdorf.com",
+   "source": "https://beincareer.com/diebold-nixdorf-ai-ml-internship-hyderabad-btech-students/",
+   "established": true,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "No direct posting link — search 'Technology Solutions Intern' on Diebold Nixdorf careers. Duration/stipend not published.",
+   "id": "diebold-ai-intern-hyd",
+   "company": "Diebold Nixdorf",
+   "title": "Technology Solutions Intern / Apprentice – AI Engineering",
+   "city": "Hyderabad"
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Tamil Nadu",
+   "district": "",
+   "alsoCities": [],
+   "mode": "On-site",
+   "expMin": 4,
+   "expMax": 6,
+   "skills": [
+    "C#",
+    "ASP.NET Core",
+    "React",
+    "TypeScript",
+    "SQL Server",
+    "PostgreSQL",
+    "AI coding agents"
+   ],
+   "qualification": "Bachelor's degree in computer science or a related field",
+   "eligibility": "",
+   "posted": "2026-11-20",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://builtinchennai.in/job/software-engineer-ii/12366418",
+   "source": "Built In",
+   "established": true,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "",
+   "id": "pdi-se2-chennai",
+   "company": "PDI Technologies",
+   "title": "Software Engineer II – C#/.NET + React",
+   "city": "Chennai"
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Tamil Nadu",
+   "district": "",
+   "alsoCities": [],
+   "mode": "On-site",
+   "expMin": 3,
+   "expMax": null,
+   "skills": [
+    "REST APIs",
+    "OAuth/JWT",
+    "Postman",
+    "Python/JavaScript/Bash",
+    "Zendesk/Jira"
+   ],
+   "qualification": "",
+   "eligibility": "Night shifts (US–India coverage)",
+   "posted": "2026-11-19",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://builtinchennai.in/job/software-engineer-ii/12337717",
+   "source": "Built In",
+   "established": true,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "Support-focused role, not core development.",
+   "id": "trimble-se2-devsupport-chennai",
+   "company": "Trimble",
+   "title": "Software Engineer II (Developer Support Specialist)",
+   "city": "Chennai"
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Tamil Nadu",
+   "district": "",
+   "alsoCities": [],
+   "mode": "Hybrid",
+   "expMin": 5,
+   "expMax": 7,
+   "skills": [
+    "Penetration Testing",
+    "Active Directory",
+    "Burp Suite",
+    "Metasploit",
+    "OSCP/OSEP"
+   ],
+   "qualification": "Bachelor's degree or equivalent, preferably in Engineering or Computer Science",
+   "eligibility": "",
+   "posted": "2026-11-20",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://builtinchennai.in/job/engineer-3-software-development-and-engineering/12359630",
+   "source": "Built In",
+   "established": true,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "",
+   "id": "comcast-eng3-pentest-chennai",
+   "company": "Comcast",
+   "title": "Engineer 3 – Software Development & Engineering (Penetration Testing)",
+   "city": "Chennai"
+  },
+  {
+   "kind": "GCC / Product",
+   "type": "Full-time",
+   "walkin": false,
+   "state": "Tamil Nadu",
+   "district": "",
+   "alsoCities": [
+    "Bengaluru"
+   ],
+   "mode": "Hybrid",
+   "expMin": 3,
+   "expMax": 6,
+   "skills": [
+    "Java",
+    "Spring Boot",
+    "React",
+    "Node.js",
+    "SAP Hybris",
+    "AWS Lambda",
+    "Microservices"
+   ],
+   "qualification": "",
+   "eligibility": "Hybrid, 3 days/week in office",
+   "posted": "2026-11-19",
+   "applyBy": "",
+   "salary": "",
+   "apply": "https://builtinchennai.in/job/software-engineer-ii/12350865",
+   "source": "Built In",
+   "established": true,
+   "official": false,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [],
+   "note": "",
+   "id": "pearson-se2-chennai",
+   "company": "Pearson",
+   "title": "Software Engineer II – Java/React, SAP Commerce",
+   "city": "Chennai"
   }
  ],
  "ap_districts": [
