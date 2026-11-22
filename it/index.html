@@ -217,13 +217,16 @@ html[data-theme="dark"] .sitefoot{background:linear-gradient(135deg,#0b4f4a,#115
 .tile.wide{grid-column:1/-1}
 .tile small{display:block;color:var(--mute);font-size:11px;font-weight:600;margin-bottom:1px}
 .tile span{font-size:13px;font-weight:600;line-height:1.35}
+.tl{display:flex;align-items:center;gap:10px;min-width:0}
+.home{flex:none;display:inline-flex;align-items:center;min-height:36px;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.16);color:#fff;font:600 13px Inter,system-ui,sans-serif;text-decoration:none;touch-action:manipulation;white-space:nowrap}
+.home:hover{background:rgba(255,255,255,.26)}
 </style>
 <script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <div class="topbar"><h1>IT Jobs Finder</h1><button type="button" class="theme" id="themeBtn">☀️ Light</button></div>
+    <div class="topbar"><div class="tl"><a class="home" href="../" aria-label="Back to Daily Jobs India home">← Home</a><h1>IT Jobs Finder</h1></div><button type="button" class="theme" id="themeBtn">☀️ Light</button></div>
     <div class="sub" id="sub">Telangana · Andhra Pradesh · Bengaluru · Chennai · Remote</div>
     <div class="views" id="views"></div>
     <div class="collapse" id="filters"><div class="inner">
