@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23",
+ "updated": "2026-11-24",
  "scope": "Big IT services + GCCs/product companies · Hyderabad, Visakhapatnam, Remote India · all levels",
  "not_covered": "TCS, Infosys, HCLTech, Cognizant, Capgemini, LTIMindtree, Tech Mahindra and IBM career portals could not be read automatically today, and news only showed their BPO/voice walk-ins (listed in the Govt & Walk-ins tab), not dated tech roles. Search those portals directly for now.",
  "jobs": [
@@ -52,28 +52,6 @@
    "apply": "https://apply.careers.microsoft.com/careers/job/1970393557051177",
    "source": "https://jobs.anitab.org/companies/microsoft-2/jobs/99526398-senior-software-engineer-cloud-infra",
    "note": "Also open for Noida."
-  },
-  {
-   "id": "google-ai-platform",
-   "company": "Google",
-   "kind": "GCC / Product",
-   "title": "Senior Software Engineer, AI Platform",
-   "city": "Hyderabad",
-   "mode": "On-site",
-   "expMin": 5,
-   "expMax": null,
-   "skills": [
-    "Machine Learning",
-    "MLOps",
-    "Agentic AI",
-    "Reinforcement Learning",
-    "LLM",
-    "Python"
-   ],
-   "posted": "2026-10-09",
-   "apply": "",
-   "source": "https://jobs.anitab.org/companies/google-2-6e248a84-5b9b-4601-aff7-7c2e9e285b9c/jobs/96422452-senior-software-engineer-ai-platform",
-   "note": "Needs 3 yrs end-to-end ML (deployment, evaluation)."
   },
   {
    "id": "amzn-sde3-cs",
