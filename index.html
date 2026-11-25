@@ -212,6 +212,17 @@ html[data-theme="dark"] .sitefoot{background:linear-gradient(135deg,#0b4f4a,#115
 .elig .tile{background:var(--card);border-color:color-mix(in srgb,var(--teal) 25%,var(--line))}
 .elig .why{grid-column:1/-1;font-size:12.5px;color:var(--mute)}
 details .tiles{margin-top:8px}
+
+/* ===== compact cards: details behind an expand button ===== */
+.job .more{display:none}
+.job.open .more{display:block}
+.keys{display:flex;flex-wrap:wrap;gap:4px 12px;margin:6px 0 0;font-size:13px;color:var(--mute)}
+.keys span{min-width:0;overflow-wrap:anywhere}
+.keys b{color:var(--ink);font-weight:600}
+.xbtn{-webkit-appearance:none;appearance:none;touch-action:manipulation;cursor:pointer;font:600 13px Inter,system-ui,sans-serif;padding:9px 14px;border-radius:11px;border:1px solid color-mix(in srgb,var(--teal) 45%,var(--line));background:color-mix(in srgb,var(--teal) 8%,var(--card));color:var(--softink)}
+.xbtn .ar{display:inline-block;transition:transform .2s}
+.job.open .xbtn .ar{transform:rotate(180deg)}
+.job .more .elig{margin-top:10px}
 </style>
 <script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
@@ -275,6 +286,13 @@ details .tiles{margin-top:8px}
 const TODAY = (()=>{const d=new Date();d.setHours(0,0,0,0);return d})();
 const state={q:'',age:'',myexp:'',qual:'Not set',eligOnly:'All jobs',cat:'All',sector:'All',region:'All',status:'Open',tab:'govt',stack:'',exp:'Any',city:'All',kind:'All',posted:'Any time'};
 let JOBS=[],IT=[],IT_META={};
+const OPEN=new Set();
+function short(t,n){t=String(t||'');return t.length>n?t.slice(0,n-1).trimEnd()+'…':t}
+function stated(v){return v&&!/^(not stated|not published|not disclosed|—|-)$/i.test(String(v).trim())}
+function xbtn(id){const o=OPEN.has(id);return `<button type="button" class="xbtn" data-x="${esc(id)}" aria-expanded="${o}"><span class="tx">${o?'Hide details':'Show full details'}</span> <span class="ar">▾</span></button>`}
+document.addEventListener('click',e=>{let t=e.target;if(t&&t.nodeType!==1)t=t.parentNode;const b=t&&t.closest?t.closest('[data-x]'):null;if(!b)return;e.preventDefault();
+  const id=b.dataset.x,art=b.closest('.job'),o=!OPEN.has(id);if(o)OPEN.add(id);else OPEN.delete(id);
+  if(art)art.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.querySelector('.tx').textContent=o?'Hide details':'Show full details';});
 
 function parse(s){if(!s)return null;const d=new Date(s+'T00:00:00');return isNaN(d)?null:d}
 function fmt(s){const d=parse(s);return d?d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}):'—'}
@@ -356,12 +374,18 @@ function itCard(r){
   const hitSkills=new Set(r.hits.filter(h=>h&&h!=='(title)'));
   const apply=safeUrl(j.apply),src=safeUrl(j.source);
   const b=terms.length?(r.n?`<div class="badge b-match">${r.n}/${terms.length} match</div>`:`<div class="badge b-none">No match</div>`):'';
-  return `<article class="job">
+  const id='it:'+(j.id||j.title),sk=j.skills.map(s=>`<span class="sk${hitSkills.has(s)?' hit':''}">${esc(s)}</span>`);
+  const hasMore=sk.length>5||j.note||j.salary||j.applyBy;
+  return `<article class="job${OPEN.has(id)?' open':''}">
     <div class="top"><div><h2>${esc(j.title)}</h2><div class="org">${esc(j.company)} · ${esc(j.kind)}</div></div>${b}</div>
-    <div class="meta"><span>📍 <b>${esc(j.city)}</b> · ${esc(j.mode)}</span><span>💼 <b>${expText(j)}</b></span><span>🕒 ${ago(j.posted)}</span>${j.salary?`<span>💰 <b>${esc(j.salary)}</b></span>`:''}${j.applyBy?`<span>⏰ Walk-in/apply by <b>${fmt(j.applyBy)}</b></span>`:''}</div>
-    <div class="skills">${j.skills.map(s=>`<span class="sk${hitSkills.has(s)?' hit':''}">${esc(s)}</span>`).join('')}</div>
-    ${j.note?`<div class="note">ℹ ${esc(j.note)}</div>`:''}
-    <div class="links">${apply?`<a class="primary" href="${apply}" target="_blank" rel="noopener">Apply on careers site</a>`:''}${src?`<a href="${src}" target="_blank" rel="noopener">${apply?'Listing':'View & apply'}</a>`:''}</div>
+    <div class="meta"><span>📍 <b>${esc(j.city)}</b> · ${esc(j.mode)}</span><span>💼 <b>${expText(j)}</b></span><span>🕒 ${ago(j.posted)}</span></div>
+    <div class="skills">${sk.slice(0,5).join('')}${sk.length>5?`<span class="sk">+${sk.length-5} more</span>`:''}</div>
+    ${hasMore?`<div class="more">
+      ${j.salary||j.applyBy?`<div class="meta">${j.salary?`<span>💰 <b>${esc(j.salary)}</b></span>`:''}${j.applyBy?`<span>⏰ Walk-in/apply by <b>${fmt(j.applyBy)}</b></span>`:''}</div>`:''}
+      ${sk.length>5?`<div class="lbl" style="margin-top:8px">All skills</div><div class="skills">${sk.join('')}</div>`:''}
+      ${j.note?`<div class="note">ℹ ${esc(j.note)}</div>`:''}
+    </div>`:''}
+    <div class="links">${hasMore?xbtn(id):''}${apply?`<a class="primary" href="${apply}" target="_blank" rel="noopener">Apply on careers site</a>`:''}${src?`<a href="${src}" target="_blank" rel="noopener">${apply?'Listing':'View & apply'}</a>`:''}</div>
   </article>`;
 }
 function renderIT(){
@@ -438,22 +462,20 @@ function card(j){
     ['Posts',j.posts],['Roles',j.roles],['Salary',j.salary],
     ['Selection',j.selection],['How to apply',j.apply],['Where',j.location]
   ].filter(r=>r[1]&&r[1]!=='—');
-  const main=rows.slice(0,4),more=rows.slice(4);
-  const dlRow=r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`;
-  const web=safeUrl(j.website),src=safeUrl(j.source);
-  return`<article class="job${st==='Closed'?' closed':''}" data-sec="${esc(j.sector)}">
+  const web=safeUrl(j.website),src=safeUrl(j.source),id='j:'+(j.id||j.title);
+  const keys=[['🎓',j.qualification,70],['💰',stated(j.salary)?j.salary:'',50],['👥',stated(j.posts)?j.posts:'',40]].filter(k=>k[1]);
+  return`<article class="job${st==='Closed'?' closed':''}${OPEN.has(id)?' open':''}" data-sec="${esc(j.sector)}">
     <div class="top"><div><h2>${esc(j.title)}</h2><div class="org">${esc(j.org)}</div></div>${badge(j)}</div>
     <div class="tags"><span class="tag ${({Govt:'govt',Private:'pvt',IT:'itc',BPO:'bpo'})[j.sector]||'pvt'}">${({Govt:'🏛 Govt',Private:'🏭 Private',IT:'💻 IT',BPO:'🎧 BPO'})[j.sector]||esc(j.sector)}</span><span class="tag">${esc(j.region)}</span>${j.added===JOBS_UPDATED?'<span class="tag">New today</span>':''}</div>
-    <div class="dates">
-      <div class="d"><small>Start</small><span>${fmt(j.start)}</span></div>
-      <div class="d"><small>Last date</small><span>${fmt(j.end)}</span></div>
-      <div class="d"><small>Where</small><span>${esc((j.location||'').split('·')[0])}</span></div>
+    <div class="keys"><span>📅 Last date <b>${fmt(j.end)}</b></span><span>📍 <b>${esc(short((j.location||'').split('·')[0],45))}</b></span></div>
+    ${keys.length?`<div class="keys">${keys.map(k=>`<span>${k[0]} <b>${esc(short(k[1],k[2]))}</b></span>`).join('')}</div>`:''}
+    <div class="more">
+      <div class="dates"><div class="d"><small>Start</small><span>${fmt(j.start)}</span></div><div class="d"><small>Last date</small><span>${fmt(j.end)}</span></div><div class="d"><small>Where</small><span>${esc((j.location||'').split('·')[0])}</span></div></div>
+      ${eligBox(j,verdict(j))}
+      <div class="tiles">${rows.map(tile).join('')}</div>
+      ${j.note?`<div class="note">⚠ ${esc(j.note)}</div>`:''}
     </div>
-    ${eligBox(j,verdict(j))}
-    <div class="tiles">${main.map(tile).join('')}</div>
-    ${more.length?`<details><summary>More details ▾</summary><div class="tiles">${more.map(tile).join('')}</div></details>`:''}
-    ${j.note?`<div class="note">⚠ ${esc(j.note)}</div>`:''}
-    <div class="links">${web?`<a class="primary" href="${web}" target="_blank" rel="noopener">Official site</a>`:''}${src?`<a href="${src}" target="_blank" rel="noopener">News source</a>`:''}</div>
+    <div class="links">${xbtn(id)}${web?`<a class="primary" href="${web}" target="_blank" rel="noopener">Official site</a>`:''}${src?`<a href="${src}" target="_blank" rel="noopener">News source</a>`:''}</div>
   </article>`;
 }
 
