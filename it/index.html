@@ -429,12 +429,12 @@ function card(r){
    <div class="contact">${email}${phone}<div><span class="k">Official site:</span> ${apply?`<a href="${apply}" target="_blank" rel="noopener">${esc(new URL(apply).hostname)}</a>`:'Not linked in listing — search the company careers page'}</div></div>
    ${f.length?`<div class="flag">⚠ ${esc(f.join(' · '))}</div>`:''}
    ${j.note?`<div class="note">ℹ ${esc(j.note)}</div>`:''}
+   </div>
    <details class="why"><summary>Why ${t.score}% genuine${m?` · ${m.pct}% match`:''} ▾</summary><ul>
     ${t.checks.map(c=>`<li><span>${c[2]?'✅':(c[3]?'➖':'❌')}</span>${esc(c[0])} <small>(${c[2]?'+'+c[1]:c[3]?'+'+c[3]:'+0'})</small></li>`).join('')}
     ${m&&m.total?`<li><span>🧩</span>Skills: ${m.n}/${m.total} of yours${m.n?' — '+esc(m.hits.filter(Boolean).filter(h=>h!=='(title)').join(', ')||'in title'):''}</li>`:''}
     ${m&&m.ef?`<li><span>📈</span>${esc(m.ef.t)}</li>`:''}
     <li><span>🏷</span><i>${tLabel(t.score)}</i></li></ul></details>
-   </div>
    <div class="links"><button type="button" class="xbtn" data-x="${esc(j.id)}" aria-expanded="${xo}"><span class="tx">${xo?'Hide details':'Show full details'}</span> <span class="ar">▾</span></button>${apply?`<a class="primary" href="${apply}" target="_blank" rel="noopener">Apply on official site</a>`:''}${src?`<a href="${src}" target="_blank" rel="noopener">${apply?'Source listing':'View listing'}</a>`:''}</div>
    <div class="acts"><button type="button" class="${sv?'on':''}" data-save="${esc(j.id)}">${sv?'★ Saved':'☆ Save'}</button><button type="button" class="${ap?'on':''}" data-applied="${esc(j.id)}">${ap?'✓ Applied':'Mark applied'}</button><button type="button" data-share="${esc(j.id)}">📤 Share</button></div>
   </article>`;
