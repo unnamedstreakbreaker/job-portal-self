@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "scope": "Big IT services + GCCs/product companies · Hyderabad, Visakhapatnam, Remote India · all levels",
  "not_covered": "TCS, Infosys, HCLTech, Cognizant, Capgemini, LTIMindtree, Tech Mahindra and IBM career portals could not be read automatically today, and news only showed their BPO/voice walk-ins (listed in the Govt & Walk-ins tab), not dated tech roles. Search those portals directly for now.",
  "jobs": [
@@ -366,46 +366,6 @@
    "note": "2025/26 batches, ECE background."
   },
   {
-   "id": "tcs-hris-oracle",
-   "company": "TCS",
-   "kind": "IT Services",
-   "title": "HRIS Oracle Fusion Benefits SME – walk-in 21 Nov",
-   "city": "Hyderabad",
-   "mode": "On-site",
-   "expMin": 4,
-   "expMax": 8,
-   "skills": [
-    "Oracle Fusion",
-    "Oracle HCM",
-    "Workday",
-    "SAP"
-   ],
-   "posted": "2026-11-19",
-   "applyBy": "2026-11-21",
-   "apply": "https://www.tcs.com/careers",
-   "source": "https://beincareer.com/tcs-walk-in-drive-hyderabad-hris-oracle-fusion-benefits-21-nov-2026/",
-   "note": "Walk-in 10 AM–12:30 PM at TCS Deccan Park, Madhapur. TCS EP number mandatory."
-  },
-  {
-   "id": "infy-bpm-product-support",
-   "company": "Infosys BPM",
-   "kind": "IT Services",
-   "title": "Technical Process Specialist – Product Support (walk-in 21 Nov)",
-   "city": "Hyderabad",
-   "mode": "On-site",
-   "expMin": 1,
-   "expMax": 4,
-   "skills": [
-    "Technical Support",
-    "Customer Support"
-   ],
-   "posted": "2026-11-19",
-   "applyBy": "2026-11-21",
-   "apply": "https://www.infosysbpm.com/careers",
-   "source": "https://beincareer.com/infosys-bpm-walk-in-drive-hyderabad-product-support-21-nov-2026/",
-   "note": "Walk-in 10 AM–1 PM, Infosys STP Manikonda. Needs Candidate ID + SHL test."
-  },
-  {
    "id": "sails-java",
    "company": "Sails Software",
    "kind": "IT Services",
@@ -568,29 +528,6 @@
    "posted": "",
    "apply": "https://jobs.lever.co/sophos/a6430b86-1264-481e-87b9-7a03471fb391",
    "source": "https://jobs.lever.co/sophos/a6430b86-1264-481e-87b9-7a03471fb391"
-  },
-  {
-   "id": "ghr-se2-gbs",
-   "company": "GHR Healthcare",
-   "kind": "GCC / Product",
-   "title": "Software Engineer II A – GBS IND",
-   "city": "Hyderabad",
-   "mode": "On-site",
-   "expMin": null,
-   "expMax": null,
-   "skills": [
-    "Java",
-    "J2EE",
-    "Spring Boot",
-    "Angular",
-    "Oracle",
-    "SQL",
-    "RAG",
-    "Agentic AI"
-   ],
-   "posted": "2026-11-20",
-   "apply": "https://builtin.com/job/software-engineer-ii-gbs-ind/11418017",
-   "source": "https://builtin.com/job/software-engineer-ii-gbs-ind/11418017"
   },
   {
    "id": "roche-fs-agentic",
@@ -965,6 +902,54 @@
    "apply": "https://builtin.com/job/senior-software-engineer-i/12169476",
    "source": "https://builtin.com/job/senior-software-engineer-i/12169476",
    "note": "Reposted; senior level."
+  },
+  {
+   "id": "snow-sr-staff-go-k8s",
+   "company": "ServiceNow",
+   "kind": "GCC / Product",
+   "title": "Sr Staff Software Engineer (Go, Kubernetes platform)",
+   "city": "Hyderabad",
+   "mode": "Hybrid",
+   "expMin": 14,
+   "expMax": null,
+   "skills": [
+    "Go",
+    "Kubernetes operators/CRDs",
+    "AWS/Azure/GCP",
+    "Microservices",
+    "Event-driven systems",
+    "Terraform/Crossplane",
+    "Observability",
+    "GitOps"
+   ],
+   "posted": "2026-11-19",
+   "apply": "https://builtin.com/job/sr-staff-software-engineer/11350003",
+   "source": "https://builtin.com/job/sr-staff-software-engineer/11350003",
+   "note": "Posted date approximate (Built In shows 'posted 6 days ago')."
+  },
+  {
+   "id": "snow-principal-ai-ux",
+   "company": "ServiceNow",
+   "kind": "GCC / Product",
+   "title": "Principal Software Engineer – AI Native UX",
+   "city": "Hyderabad",
+   "mode": "Hybrid",
+   "expMin": 15,
+   "expMax": null,
+   "skills": [
+    "React",
+    "TypeScript",
+    "Lit.js",
+    "Design systems",
+    "Agentic AI / MCP",
+    "Kubernetes",
+    "Java",
+    "Python"
+   ],
+   "posted": "2026-11-22",
+   "apply": "https://builtin.com/job/principal-software-engineer-ai-native-ux/11348347",
+   "source": "https://builtin.com/job/principal-software-engineer-ai-native-ux/11348347",
+   "note": "Posted date approximate (Built In shows 'posted 3 days ago')."
   }
  ]
 }
