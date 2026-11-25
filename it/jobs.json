@@ -5651,6 +5651,44 @@
    "established": false,
    "official": false,
    "corroborated": false
+  },
+  {
+   "id": "jobgether-ai-coding-tasks-contract",
+   "company": "Jobgether (for a partner company)",
+   "kind": "Startup / SME",
+   "type": "Contract",
+   "walkin": false,
+   "title": "Experienced Software Engineers: Coding Tasks for AI Systems",
+   "city": "Remote India",
+   "state": "",
+   "district": "",
+   "alsoCities": [],
+   "mode": "Remote",
+   "expMin": null,
+   "expMax": null,
+   "skills": [
+    "Command line",
+    "GitHub",
+    "Docker",
+    "Automated testing",
+    "Debugging"
+   ],
+   "qualification": "",
+   "eligibility": "Professional software-engineering experience; identity verification and technical skills assessment required",
+   "posted": "",
+   "applyBy": "",
+   "salary": "$82 per completed task",
+   "apply": "https://jobs.lever.co/jobgether/648b0eba-6984-4526-98d3-4b1b4d2eb732",
+   "source": "jobs.lever.co (Jobgether)",
+   "established": false,
+   "official": true,
+   "corroborated": false,
+   "hrEmail": "",
+   "hrPhone": "",
+   "redFlags": [
+    "employer not named (listed via intermediary)"
+   ],
+   "note": "Per-task contract pay, no fixed hours or benefits; posting date not shown"
   }
  ],
  "ap_districts": [
