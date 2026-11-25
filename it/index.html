@@ -220,6 +220,12 @@ html[data-theme="dark"] .sitefoot{background:linear-gradient(135deg,#0b4f4a,#115
 .tl{display:flex;align-items:center;gap:10px;min-width:0}
 .home{flex:none;display:inline-flex;align-items:center;min-height:36px;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.16);color:#fff;font:600 13px Inter,system-ui,sans-serif;text-decoration:none;touch-action:manipulation;white-space:nowrap}
 .home:hover{background:rgba(255,255,255,.26)}
+/* ===== compact cards: details behind an expand button ===== */
+.job .xmore{display:none}
+.job.open .xmore{display:block}
+.xbtn{-webkit-appearance:none;appearance:none;touch-action:manipulation;cursor:pointer;font:600 13px Inter,system-ui,sans-serif;padding:9px 14px;border-radius:11px;border:1px solid color-mix(in srgb,var(--teal) 45%,var(--line));background:color-mix(in srgb,var(--teal) 8%,var(--card));color:var(--teal)}
+.xbtn .ar{display:inline-block;transition:transform .2s}
+.job.open .xbtn .ar{transform:rotate(180deg)}
 </style>
 <script>(function(){try{var t=localStorage.getItem('jp_theme')||'light';if(t==='auto')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();</script>
 </head>
@@ -401,18 +407,25 @@ function eligBox(j){
   const rows=[['🎓','Qualification',qual],['💼','Experience',expText(j)+(j.walkin?' · attend in person':'')],['🛠','Key skills',j.skills.slice(0,6).join(', ')||'See listing'],['🧾','Job type',jt(j)+' · '+j.mode+(jt(j)==='Freelance'||jt(j)==='Contract'?' · no PF/leave usually':'')]];
   if(j.eligibility)rows.push(['📌','Also',j.eligibility]);
   return `<div class="elig"><h3><span>✅ Eligibility</span>${v?`<span class="vd ${v.c}">${esc(v.t)}</span>`:''}</h3><div class="tiles">${rows.map(r=>`<div class="tile${String(r[2]).length>48?' wide':''}"><small>${r[0]} ${esc(r[1])}</small><span>${esc(r[2])}</span></div>`).join('')}</div></div>`}
+const OPEN=new Set();
+document.addEventListener('click',e=>{let t=e.target;if(t&&t.nodeType!==1)t=t.parentNode;const b=t&&t.closest?t.closest('[data-x]'):null;if(!b)return;e.preventDefault();
+  const id=b.dataset.x,art=b.closest('.job'),o=!OPEN.has(id);if(o)OPEN.add(id);else OPEN.delete(id);
+  if(art)art.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.querySelector('.tx').textContent=o?'Hide details':'Show full details';});
 function card(r){
   const j=r.j,t=r.t,m=r.m,hitSet=new Set(m?m.hits.filter(h=>h&&h!=='(title)'):[]);
   const apply=safeUrl(j.apply),src=safeUrl(j.source),f=flags(j);
   const email=j.hrEmail?`<div><span class="k">HR email:</span> <b>${esc(j.hrEmail)}</b>${FREE.test(j.hrEmail)?' ⚠️':''}</div>`:`<div><span class="k">HR email:</span> Not published — apply on the official site</div>`;
   const phone=j.hrPhone?`<div><span class="k">HR phone:</span> <b>${esc(j.hrPhone)}</b></div>`:'';
   const sv=!!MARK.saved[j.id],ap=!!MARK.applied[j.id];
-  return `<article class="job${ap?' applied':''}" data-t="${jt(j)}">
+  const xo=OPEN.has(j.id),sk=j.skills.map(s=>`<span class="sk${hitSet.has(s)?' hit':''}">${esc(s)}</span>`);
+  return `<article class="job${ap?' applied':''}${xo?' open':''}" data-t="${jt(j)}">
    <div class="top"><div><h2>${esc(j.title)}</h2><div class="org">${esc(j.company)} · ${esc(j.kind)}</div><div class="badges"><span class="bd ${jt(j)}">${jt(j)}</span>${j.walkin?'<span class="bd walk">Walk-in</span>':''}<span class="bd">${esc(j.mode)}</span>${MARK.applied[j.id]?'<span class="bd" style="color:var(--ok)">✓ Applied</span>':''}</div></div>
     <div class="scores"><span class="sc ${tClass(t.score)}">${t.score}% genuine</span>${m?`<span class="sc m">${m.pct}% match</span>`:''}</div></div>
    <div class="meta"><span>📍 <b>${esc(j.city)}</b>${j.district&&j.district!==j.city?` (${esc(j.district)} dist.)`:''}${(j.alsoCities||[]).length?` + ${esc(j.alsoCities.join(', '))}`:''} · ${esc(j.mode)}</span><span>💼 <b>${expText(j)}</b></span><span>🕒 ${ago(j)}</span>${j.salary?`<span>💰 <b>${esc(j.salary)}</b></span>`:''}${j.applyBy?`<span>⏰ By <b>${fmt(j.applyBy)}</b></span>`:''}</div>
+   <div class="skills">${sk.slice(0,5).join('')}${sk.length>5?`<span class="sk">+${sk.length-5} more</span>`:''}</div>
+   <div class="xmore">
    ${eligBox(j)}
-   <div class="skills">${j.skills.map(s=>`<span class="sk${hitSet.has(s)?' hit':''}">${esc(s)}</span>`).join('')}</div>
+   ${sk.length>5?`<div class="skills">${sk.join('')}</div>`:''}
    <div class="contact">${email}${phone}<div><span class="k">Official site:</span> ${apply?`<a href="${apply}" target="_blank" rel="noopener">${esc(new URL(apply).hostname)}</a>`:'Not linked in listing — search the company careers page'}</div></div>
    ${f.length?`<div class="flag">⚠ ${esc(f.join(' · '))}</div>`:''}
    ${j.note?`<div class="note">ℹ ${esc(j.note)}</div>`:''}
@@ -421,7 +434,8 @@ function card(r){
     ${m&&m.total?`<li><span>🧩</span>Skills: ${m.n}/${m.total} of yours${m.n?' — '+esc(m.hits.filter(Boolean).filter(h=>h!=='(title)').join(', ')||'in title'):''}</li>`:''}
     ${m&&m.ef?`<li><span>📈</span>${esc(m.ef.t)}</li>`:''}
     <li><span>🏷</span><i>${tLabel(t.score)}</i></li></ul></details>
-   <div class="links">${apply?`<a class="primary" href="${apply}" target="_blank" rel="noopener">Apply on official site</a>`:''}${src?`<a href="${src}" target="_blank" rel="noopener">${apply?'Source listing':'View listing'}</a>`:''}</div>
+   </div>
+   <div class="links"><button type="button" class="xbtn" data-x="${esc(j.id)}" aria-expanded="${xo}"><span class="tx">${xo?'Hide details':'Show full details'}</span> <span class="ar">▾</span></button>${apply?`<a class="primary" href="${apply}" target="_blank" rel="noopener">Apply on official site</a>`:''}${src?`<a href="${src}" target="_blank" rel="noopener">${apply?'Source listing':'View listing'}</a>`:''}</div>
    <div class="acts"><button type="button" class="${sv?'on':''}" data-save="${esc(j.id)}">${sv?'★ Saved':'☆ Save'}</button><button type="button" class="${ap?'on':''}" data-applied="${esc(j.id)}">${ap?'✓ Applied':'Mark applied'}</button><button type="button" data-share="${esc(j.id)}">📤 Share</button></div>
   </article>`;
 }
