@@ -1052,6 +1052,43 @@
    "posted": "2026-11-25",
    "apply": "https://jobfound.org/job/broadridge-is-hiring-for-software-engineering-hyderabad-india-25-november-2026",
    "source": "https://jobfound.org/job/broadridge-is-hiring-for-software-engineering-hyderabad-india-25-november-2026"
+  },
+  {
+   "id": "wellsfargo-sse-observability",
+   "company": "Wells Fargo",
+   "kind": "GCC / Product",
+   "title": "Senior Software Engineer (Observability, Python, MongoDB, AI Framework)",
+   "city": "Hyderabad",
+   "mode": "Hybrid",
+   "expMin": null,
+   "expMax": null,
+   "skills": [
+    "Python",
+    "MongoDB",
+    "Observability",
+    "AI frameworks"
+   ],
+   "posted": "2026-11-20",
+   "salary": "",
+   "apply": "https://builtin.com/job/senior-software-engineer-observability-python-mongodb-ai-framework/11346486",
+   "source": "https://builtin.com/job/senior-software-engineer-observability-python-mongodb-ai-framework/11346486",
+   "note": "Posted date approximate (listing showed '6 days ago'); experience not read — check listing."
+  },
+  {
+   "id": "ghr-se2-gbs-ind",
+   "company": "GHR Healthcare",
+   "kind": "GCC / Product",
+   "title": "Software Engineer II A – GBS IND",
+   "city": "Hyderabad",
+   "mode": "On-site",
+   "expMin": null,
+   "expMax": null,
+   "skills": [],
+   "posted": "2026-11-25",
+   "salary": "",
+   "apply": "https://builtin.com/job/software-engineer-ii-gbs-ind/11418017",
+   "source": "https://builtin.com/job/software-engineer-ii-gbs-ind/11418017",
+   "note": "Posted date approximate (listing showed 'yesterday'); skills/experience not read — check listing."
   }
  ]
 }
