@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "scope": "Big IT services + GCCs/product companies · Hyderabad, Visakhapatnam, Remote India · all levels",
  "not_covered": "TCS, Infosys, HCLTech, Cognizant, Capgemini, LTIMindtree, Tech Mahindra and IBM career portals could not be read automatically today, and news only showed their BPO/voice walk-ins (listed in the Govt & Walk-ins tab), not dated tech roles. Search those portals directly for now.",
  "jobs": [
@@ -950,6 +950,108 @@
    "apply": "https://builtin.com/job/principal-software-engineer-ai-native-ux/11348347",
    "source": "https://builtin.com/job/principal-software-engineer-ai-native-ux/11348347",
    "note": "Posted date approximate (Built In shows 'posted 3 days ago')."
+  },
+  {
+   "id": "capg-se-1457915333",
+   "company": "Capgemini",
+   "kind": "IT Services",
+   "title": "Software Engineer (Capgemini Engineering)",
+   "city": "Hyderabad",
+   "mode": "Not stated",
+   "expMin": 1,
+   "expMax": 3,
+   "skills": [
+    "Software Development",
+    "Software Design",
+    "Programming"
+   ],
+   "posted": "2026-11-17",
+   "apply": "https://careers.capgemini.com/job/Hyderabad-Software-Engineer/1457915333/",
+   "source": "https://careers.capgemini.com/job/Hyderabad-Software-Engineer/1457915333/"
+  },
+  {
+   "id": "optum-sse-2397716",
+   "company": "Optum",
+   "kind": "GCC / Product",
+   "title": "Senior Software Engineer (Java, Spring, REST) – Req 2397716",
+   "city": "Hyderabad",
+   "mode": "Not stated",
+   "expMin": 2,
+   "expMax": null,
+   "skills": [
+    "Java",
+    "Spring",
+    "Spring Security",
+    "Hibernate",
+    "JavaScript",
+    "REST APIs",
+    "Git"
+   ],
+   "posted": "2026-11-23",
+   "apply": "https://uhg.taleo.net/careersection/10780/jobapply.ftl?job=2397716",
+   "source": "https://careers.unitedhealthgroup.com/job/hyderabad/senior-software-engineer/34088/103708681728"
+  },
+  {
+   "id": "statestreet-sed-officer-r801428",
+   "company": "State Street",
+   "kind": "GCC / Product",
+   "title": "Software Engineering & Development, Officer (R-801428)",
+   "city": "Hyderabad",
+   "mode": "Not stated",
+   "expMin": null,
+   "expMax": null,
+   "skills": [
+    "ReactJS",
+    "JavaScript/TypeScript",
+    "Java",
+    "Spring Boot",
+    "Microservices",
+    "SQL",
+    "Azure"
+   ],
+   "posted": "2026-11-25",
+   "apply": "https://statestreet.wd1.myworkdayjobs.com/Global/job/Hyderabad-India/Software-Engineering---Development--Officer_R-801428",
+   "source": "https://offcampusjobs4u.com/state-street-software-engineering-development-officer-hyderabad/"
+  },
+  {
+   "id": "infor-se-hyd-nov22",
+   "company": "Infor",
+   "kind": "GCC / Product",
+   "title": "Software Engineer (.NET / C#)",
+   "city": "Hyderabad",
+   "mode": "Not stated",
+   "expMin": 2,
+   "expMax": 4,
+   "skills": [
+    ".NET",
+    "C#",
+    "SQL",
+    "AWS",
+    "Azure",
+    "Git"
+   ],
+   "posted": "2026-11-22",
+   "apply": "https://jobfound.org/job/infor-is-hiring-for-software-engineer-hyderabad-telangana-india-india-22-november-2026",
+   "source": "https://jobfound.org/job/infor-is-hiring-for-software-engineer-hyderabad-telangana-india-india-22-november-2026"
+  },
+  {
+   "id": "broadridge-se-hyd-nov25",
+   "company": "Broadridge",
+   "kind": "GCC / Product",
+   "title": "Software Engineering (fresher)",
+   "city": "Hyderabad",
+   "mode": "Not stated",
+   "expMin": 0,
+   "expMax": null,
+   "skills": [
+    "Software Development",
+    "Application Development",
+    "Agile",
+    "Debugging"
+   ],
+   "posted": "2026-11-25",
+   "apply": "https://jobfound.org/job/broadridge-is-hiring-for-software-engineering-hyderabad-india-25-november-2026",
+   "source": "https://jobfound.org/job/broadridge-is-hiring-for-software-engineering-hyderabad-india-25-november-2026"
   }
  ]
 }
