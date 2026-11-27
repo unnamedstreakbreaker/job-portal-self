@@ -20,6 +20,6 @@ simple = { limit = 3, period = 60 }
 # then paste the id it prints below.
 [[kv_namespaces]]
 binding = "KV"
-id = "PASTE_KV_NAMESPACE_ID_HERE"
+id = "8330fe1f90484036bed4aaba3469a5b8"
 
 # Secret (never put it in this file):  npx wrangler secret put ANTHROPIC_API_KEY
