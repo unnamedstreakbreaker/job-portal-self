@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26",
+ "updated": "2026-11-27",
  "scope": "Big IT services + GCCs/product companies · Hyderabad, Visakhapatnam, Remote India · all levels",
  "not_covered": "TCS, Infosys, HCLTech, Cognizant, Capgemini, LTIMindtree, Tech Mahindra and IBM career portals could not be read automatically today, and news only showed their BPO/voice walk-ins (listed in the Govt & Walk-ins tab), not dated tech roles. Search those portals directly for now.",
  "jobs": [
@@ -1089,6 +1089,70 @@
    "apply": "https://builtin.com/job/software-engineer-ii-gbs-ind/11418017",
    "source": "https://builtin.com/job/software-engineer-ii-gbs-ind/11418017",
    "note": "Posted date approximate (listing showed 'yesterday'); skills/experience not read — check listing."
+  },
+  {
+   "id": "capg-se-1451260733",
+   "company": "Capgemini",
+   "kind": "IT Services",
+   "title": "Software Engineer",
+   "city": "Hyderabad",
+   "mode": "Not stated",
+   "expMin": 1,
+   "expMax": null,
+   "skills": [
+    "Software design",
+    "Programming",
+    "Software development"
+   ],
+   "posted": "2026-11-24",
+   "apply": "https://careers.capgemini.com/talentcommunity/apply/1451260733/?locale=en_GB",
+   "source": "https://careers.capgemini.com/job/Hyderabad-Software-Engineer/1451260733/"
+  },
+  {
+   "id": "snow-sr-aiml-744000161804448",
+   "company": "ServiceNow",
+   "kind": "GCC / Product",
+   "title": "Senior Software AIML Engineer",
+   "city": "Hyderabad",
+   "mode": "Flexible",
+   "expMin": 5,
+   "expMax": null,
+   "skills": [
+    "Python",
+    "Java",
+    "Go",
+    "TypeScript",
+    "React",
+    "LLMs",
+    "RAG",
+    "Vector search",
+    "Agentic workflows",
+    "Kubernetes"
+   ],
+   "posted": "2026-11-16",
+   "apply": "https://jobs.smartrecruiters.com/ServiceNow/744000161804448-senior-software-aiml-engineer?oga=true",
+   "source": "https://careers.servicenow.com/jobs/744000161804448/senior-software-aiml-engineer/"
+  },
+  {
+   "id": "gev-se-hyd-nov14",
+   "company": "GE Vernova",
+   "kind": "GCC / Product",
+   "title": "Software Engineer (Power Systems)",
+   "city": "Hyderabad",
+   "mode": "Not stated",
+   "expMin": 2,
+   "expMax": 5,
+   "skills": [
+    "C++",
+    "Power Systems",
+    "Transmission & Distribution",
+    "Databases",
+    "Software Design",
+    "Testing"
+   ],
+   "posted": "2026-11-14",
+   "apply": "https://jobfound.org/job/ge-vernova-is-hiring-for-software-engineer-hyderabad-india-14-november-2026",
+   "source": "https://jobfound.org/job/ge-vernova-is-hiring-for-software-engineer-hyderabad-india-14-november-2026"
   }
  ]
 }
