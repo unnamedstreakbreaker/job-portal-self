@@ -21,7 +21,9 @@ RSS news feeds ──► article text ──► Claude (structured extraction) �
 Both pages have a **📄 Resume check** button in the header (`site/resume.js`, one shared file). A visitor uploads a PDF, Word (.docx) or text resume, or pastes it:
 
 - **Instant checks, in the browser:** contact details, sections, length, numbers that show impact, action verbs, personal details to drop, recognised skills, years of experience and highest qualification.
+- **A resume match score on every job card**, for each visitor: once a resume is uploaded, each card shows its % match and why (skills you have and lack, experience fit, or qualification and age). A bar above the list can sort by best match, update the resume or remove it. Only a small profile (skills, years, qualification, age) is saved, in that visitor's own browser.
 - **Matching jobs from this site:** IT jobs ranked by skill overlap and experience; govt/private jobs by qualification (and age, if entered).
+- **CARL stories (IT page):** the strongest achievements turned into Context · Action · Result · Learning stories, each with a resume bullet and an interview question; editable, copyable and downloadable as a PDF. Without AI it drafts the skeleton from the visitor's own bullets.
 - **AI review** (score, strengths, gaps, fixes, missing keywords, best-fit jobs) and a **rewritten resume** the visitor can edit and download as an ATS-friendly PDF. The rewrite never invents facts.
 
 The AI part runs through the Cloudflare Worker in [`worker/`](worker/README.md) with your Anthropic key; set its URL in `RESUME_CFG` near the end of `site/index.html` and `site/it/index.html`. Until then the GitHub site shows the instant checks and matching jobs only. On the Claude artifact versions, the AI part uses the viewer's own Claude account.
