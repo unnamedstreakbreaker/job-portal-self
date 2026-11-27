@@ -1,0 +1,25 @@
+name = "job-portal-resume"
+main = "resume-worker.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+# Sites allowed to call this worker (comma-separated, no trailing slash).
+ALLOWED_ORIGINS = "https://unnamedstreakbreaker.github.io"
+MODEL_ANALYZE = "claude-sonnet-5-5"
+MODEL_BUILD = "claude-sonnet-5-5"
+DAILY_PER_IP = "10"   # AI calls per visitor IP per day (a check + a rewrite = 2)
+DAILY_TOTAL = "300"   # AI calls per day for the whole site
+
+# Burst limit: 3 requests per 60 s per IP (free on the Workers free plan).
+[[ratelimits]]
+name = "RL"
+namespace_id = "1001"
+simple = { limit = 3, period = 60 }
+
+# Daily caps. Create the namespace with:  npx wrangler kv namespace create RESUME_KV
+# then paste the id it prints below.
+[[kv_namespaces]]
+binding = "KV"
+id = "PASTE_KV_NAMESPACE_ID_HERE"
+
+# Secret (never put it in this file):  npx wrangler secret put ANTHROPIC_API_KEY

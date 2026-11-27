@@ -16,6 +16,16 @@ RSS news feeds ──► article text ──► Claude (structured extraction) �
 - **Cost:** about 60 articles a day on Claude Haiku costs a few cents.
 - **Deduplication:** when the same job appears in several articles, it becomes one record. Missing fields are filled in from later articles, and an extended last date is picked up automatically.
 
+## Resume check & builder
+
+Both pages have a **📄 Resume check** button in the header (`site/resume.js`, one shared file). A visitor uploads a PDF, Word (.docx) or text resume, or pastes it:
+
+- **Instant checks, in the browser:** contact details, sections, length, numbers that show impact, action verbs, personal details to drop, recognised skills, years of experience and highest qualification.
+- **Matching jobs from this site:** IT jobs ranked by skill overlap and experience; govt/private jobs by qualification (and age, if entered).
+- **AI review** (score, strengths, gaps, fixes, missing keywords, best-fit jobs) and a **rewritten resume** the visitor can edit and download as an ATS-friendly PDF. The rewrite never invents facts.
+
+The AI part runs through the Cloudflare Worker in [`worker/`](worker/README.md) with your Anthropic key; set its URL in `RESUME_CFG` near the end of `site/index.html` and `site/it/index.html`. Until then the GitHub site shows the instant checks and matching jobs only. On the Claude artifact versions, the AI part uses the viewer's own Claude account.
+
 ## IT jobs tab
 
 `site/it_jobs.json` powers the **IT Jobs** tab. On the page you type your tech stack (for example "Java, Spring Boot, AWS"), and jobs are ranked by how many of your skills they ask for. Matched skills are highlighted, and you can filter by experience, city, company type and posting date.
