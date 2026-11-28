@@ -1153,6 +1153,55 @@
    "posted": "2026-11-14",
    "apply": "https://jobfound.org/job/ge-vernova-is-hiring-for-software-engineer-hyderabad-india-14-november-2026",
    "source": "https://jobfound.org/job/ge-vernova-is-hiring-for-software-engineer-hyderabad-india-14-november-2026"
+  },
+  {
+   "id": "snow-staff-se-jb0076468",
+   "company": "ServiceNow",
+   "kind": "GCC / Product",
+   "title": "Staff Software Engineer",
+   "city": "Hyderabad",
+   "mode": "Flexible",
+   "expMin": 9,
+   "expMax": null,
+   "skills": [
+    "Java",
+    "REST APIs",
+    "Distributed systems",
+    "JUnit",
+    "Mockito",
+    "CI/CD",
+    "Kubernetes",
+    "AWS",
+    "Azure",
+    "Observability"
+   ],
+   "posted": "2026-11-21",
+   "apply": "https://jobs.smartrecruiters.com/ServiceNow/744000162953819-staff-software-engineer?oga=true",
+   "source": "https://careers.servicenow.com/jobs/744000162953819/staff-software-engineer/"
+  },
+  {
+   "id": "snow-se-go-k8s-jb0074553",
+   "company": "ServiceNow",
+   "kind": "GCC / Product",
+   "title": "Software Engineer (Go & Kubernetes)",
+   "city": "Hyderabad",
+   "mode": "Flexible",
+   "expMin": 2,
+   "expMax": null,
+   "skills": [
+    "Go",
+    "Kubernetes",
+    "Containers",
+    "CI/CD",
+    "GitOps",
+    "IaC",
+    "AWS/Azure/GCP",
+    "Terraform"
+   ],
+   "posted": "2026-11-23",
+   "apply": "https://jobs.smartrecruiters.com/ServiceNow/744000163146999-software-engineer-go-kubernetes-?oga=true",
+   "source": "https://careers.servicenow.com/jobs/744000163146999/software-engineer-go-kubernetes/",
+   "note": "Listed as Flexible or Remote."
   }
  ]
 }
